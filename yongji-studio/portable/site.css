@@ -1,0 +1,2300 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@500;600&display=swap');
+
+/* ==========================================================================
+   永吉床墊 - 極簡大氣・獨立家具品牌設計系統 (Clean Bedding Brand System)
+   遵循 Anti-Slop (taste-skill) 審美品味指南：
+   - DESIGN_VARIANCE: 7 (日系雜誌非對稱佈局、留白呼吸感)
+   - MOTION_INTENSITY: 4 (沉穩物理微動態、觸覺回饋)
+   - VISUAL_DENSITY: 3 (寬裕空間、清晰字體階層、嚴格對比度)
+   ========================================================================== */
+
+:root {
+  /* 導覽列高度基準 (相接無縫鎖定) */
+  --header-h: 72px;
+
+  /* 自然溫潤色盤 (Anti-Slop Restrained Organic Palette) */
+  --bg-page: #faf9f6;          /* 暖燕麥純淨紙白 */
+  --bg-soft: #f4efe9;          /* 原本溫潤雅緻米砂底色 (Banner 專屬) */
+  --bg-pill: #f0ebe2;          /* 僅用於小標籤與微膠囊的精緻底色 */
+  --bg-card: #ffffff;          /* 純淨暖白瓷 */
+  
+  --color-pine: #1b3527;        /* 沉穩松墨綠：主品牌色彩，飽和度克制 */
+  --color-pine-hover: #264b38;  /* 柔光墨綠 */
+  --color-pine-light: #edf3ee;  /* 晨霧淡綠 */
+  --color-clay: #7d6750;        /* 暖陶土自然色 */
+  --color-amber-subtle: #8a735b;/* 琥珀木紋微調色 */
+  
+  --text-main: #141d17;         /* 深黛墨黑：主標高清晰對比 (WCAG AAA) */
+  --text-muted: #334037;        /* 雅墨深灰：內文清晰分明 (WCAG AAA) */
+  --text-subtle: #627167;       /* 說明與微字清晰分明 (WCAG AA 4.5:1+) */
+  
+  --line-color: #e4dfd6;        /* 啞光自然邊線 */
+  --line-light: #ece8e1;        /* 極淡線 */
+  --line-focus: #1b3527;
+
+  /* 字體系統 */
+  --font-serif: 'Noto Serif TC', 'Songti TC', 'PMingLiU', serif;
+  --font-sans: 'Manrope', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* 形狀一致性鎖定 (Shape Consistency Lock - taste-skill) */
+  --radius-sm: 6px;             /* 按鈕、Icon 盒、標籤徽章 */
+  --radius-md: 12px;            /* 卡片、圖框、面板容器 */
+  --radius-lg: 16px;            /* 大區塊浮層 */
+  --radius-pill: 999px;
+  
+  /* 多層次環境光暖灰陰影 (Tinted Elevation System - taste-skill) */
+  --shadow-subtle: 0 1px 3px rgba(20, 29, 23, 0.03), 0 4px 12px rgba(20, 29, 23, 0.04);
+  --shadow-card: 0 2px 6px rgba(20, 29, 23, 0.03), 0 10px 24px -4px rgba(20, 29, 23, 0.05);
+  --shadow-card-hover: 0 4px 12px rgba(20, 29, 23, 0.05), 0 18px 36px -6px rgba(20, 29, 23, 0.09);
+  --shadow-float: 0 12px 32px -6px rgba(20, 29, 23, 0.12), 0 4px 12px rgba(20, 29, 23, 0.04);
+
+  --grain: url('./assets/paper-grain.svg');
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 140px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  background: var(--bg-page) var(--grain) repeat;
+  font: 400 16px/1.85 var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+h1, h2, h3, h4, p, figure, dl, dd, ul, ol {
+  margin: 0;
+}
+
+/* 標題排版 */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: clamp(34px, 3.8vw, 52px); }
+h2 { font-size: clamp(26px, 2.5vw, 36px); }
+h3 { font-size: clamp(20px, 1.8vw, 24px); }
+
+p {
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+.wrap {
+  width: min(1160px, 90%);
+  margin-inline: auto;
+}
+
+.narrow {
+  width: min(800px, 90%);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 88px;
+}
+
+.section-sm {
+  padding-block: 56px;
+}
+
+.section-white,
+.bg-white {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.bg-soft {
+  background: var(--bg-soft) var(--grain) repeat;
+  border-block: 1px solid var(--line-light);
+}
+
+/* ==========================================================================
+   簡約大氣按鈕與文字連結 (Clean Buttons & Links - Tactile Feedback)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font: 500 15px/1.4 var(--font-sans);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  position: relative;
+  user-select: none;
+  transition: transform 0.2s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.2s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-1.5px);
+}
+
+.btn:active {
+  transform: translateY(0.5px) scale(0.985);
+}
+
+.btn-primary {
+  background: var(--color-pine);
+  color: #ffffff;
+  border: 1px solid var(--color-pine);
+  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.btn-primary:hover {
+  background: var(--color-pine-hover);
+  border-color: var(--color-pine-hover);
+  box-shadow: 0 4px 14px rgba(27, 53, 39, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark {
+  background: var(--text-main);
+  color: #ffffff;
+  border: 1px solid var(--text-main);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-dark:hover {
+  background: #000000;
+  border-color: #000000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1.5px solid var(--text-main);
+}
+
+.btn-outline:hover {
+  background: var(--text-main);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(20, 29, 23, 0.15);
+}
+
+.btn-header {
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 18px;
+  min-height: 40px;
+  background: var(--color-pine);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.btn-header:hover {
+  background: var(--color-pine-hover);
+  box-shadow: 0 3px 10px rgba(27, 53, 39, 0.2);
+}
+
+.btn-sm {
+  min-height: 38px;
+  padding: 8px 16px;
+  font-size: 13px;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.03);
+}
+
+.btn-sm:hover {
+  border-color: var(--color-pine);
+  color: var(--color-pine);
+  box-shadow: 0 2px 8px rgba(27, 53, 39, 0.08);
+}
+
+.btn-large {
+  min-height: 54px;
+  padding: 15px 36px;
+  font-size: 16px;
+}
+
+.text-link-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-pine);
+  border-bottom: 1px solid var(--color-pine);
+  padding-bottom: 2px;
+}
+
+.text-link-clean:hover {
+  opacity: 0.75;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-pine);
+}
+
+.link-arrow:hover {
+  text-decoration: underline;
+}
+
+.sub-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-clay);
+  margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   頂部導覽列 (Site Header - Restrained Glassmorphism)
+   ========================================================================== */
+
+.site-header {
+  height: var(--header-h);
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: rgba(250, 249, 246, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line-light);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.site-header.scrolled {
+  height: var(--header-h);
+  background: rgba(250, 249, 246, 0.98);
+  box-shadow: 0 4px 20px rgba(20, 29, 23, 0.06);
+  border-bottom-color: var(--line-color);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  background: var(--color-pine);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(27, 53, 39, 0.2);
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+.brand-name small {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--text-subtle);
+  margin-top: 1px;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.desktop-nav a {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.2s var(--ease);
+}
+
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-pine);
+  transition: width 0.25s var(--ease);
+}
+
+.desktop-nav a:hover {
+  color: var(--color-pine);
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a[aria-current="page"]::after {
+  width: 100%;
+}
+
+.desktop-nav a[aria-current="page"] {
+  font-weight: 600;
+  color: var(--color-pine);
+}
+
+.header-action {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--text-main);
+}
+
+.menu-panel {
+  display: none;
+}
+
+.preview-tag {
+  display: none;
+}
+
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 10px;
+  background: var(--text-main);
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  border-radius: var(--radius-sm);
+}
+
+.skip:focus {
+  top: 10px;
+}
+
+/* ==========================================================================
+   首頁 1. 品牌主張與真實影像 (Hero Clean)
+   ========================================================================== */
+
+.hero-clean {
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-page);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.hero-image-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+}
+
+.hero-dim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(250, 249, 246, 0.98) 0%,
+    rgba(250, 249, 246, 0.94) 40%,
+    rgba(250, 249, 246, 0.6) 68%,
+    rgba(250, 249, 246, 0.15) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-block: 80px;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-pretitle {
+  display: inline-block;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-clay);
+  margin-bottom: 18px;
+}
+
+.hero-clean h1 {
+  color: var(--text-main);
+  font-size: clamp(38px, 4.2vw, 56px);
+  margin-bottom: 20px;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-rendering: optimizeLegibility;
+}
+
+.hero-desc {
+  color: var(--text-muted);
+  font-size: 16.5px;
+  line-height: 1.9;
+  margin-bottom: 34px;
+  max-width: 52ch;
+}
+
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn-outline-hero {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-pine);
+  border: 1.5px solid var(--color-pine);
+  box-shadow: 0 1px 3px rgba(20, 29, 23, 0.05);
+}
+
+.btn-outline-hero:hover {
+  background: var(--color-pine);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(27, 53, 39, 0.2);
+}
+
+.image-note {
+  position: absolute;
+  bottom: 16px;
+  right: 4%;
+  font-size: 11px;
+  color: var(--text-subtle);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--line-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   首頁 2. 三個需求入口 (Entrances Clean)
+   ========================================================================== */
+
+.entrances-clean {
+  padding-block: 54px 24px;
+}
+
+.entrances-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.entrance-item {
+  background: #ffffff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-md);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.entrance-item:hover {
+  transform: translateY(-3.5px);
+  border-color: var(--color-pine);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.entrance-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  color: var(--color-pine);
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  border: 1px solid rgba(27, 53, 39, 0.08);
+  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.04);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.entrance-item:hover .entrance-icon-box {
+  background: var(--color-pine);
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.entrance-hint {
+  font-size: 13px;
+  color: var(--text-subtle);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.entrance-item h2 {
+  font-size: 23px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.entrance-item p {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.entrance-go {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-pine);
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s var(--ease);
+}
+
+.entrance-item:hover .entrance-go {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   首頁 3. 闆娘怎麼協助選床 (Method Clean)
+   ========================================================================== */
+
+.method-clean {
+  border-top: 1px solid var(--line-light);
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.method-figure figure {
+  height: 480px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--line-light);
+}
+
+.method-figure .caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  font-size: 11px;
+  color: #fff;
+  background: rgba(20, 29, 23, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+}
+
+.method-intro {
+  font-size: 16px;
+  line-height: 1.9;
+  margin: 18px 0 28px;
+}
+
+.method-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.method-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.method-step:hover {
+  transform: translateY(-2px);
+  border-color: rgba(27, 53, 39, 0.25);
+  box-shadow: var(--shadow-card);
+}
+
+.step-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  color: var(--color-pine);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(27, 53, 39, 0.08);
+  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.04);
+}
+
+.step-content h3 {
+  font-size: 16.5px;
+  margin-bottom: 4px;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.step-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.method-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   首頁 4. 精選款式與差異 (Products Clean - taste-skill Alignment)
+   ========================================================================== */
+
+.products-clean {
+  background: transparent;
+  border-block: 1px solid var(--line-light);
+}
+
+.section-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 44px;
+}
+
+.section-lead {
+  font-size: 15.5px;
+  color: var(--text-muted);
+  margin-top: 10px;
+  max-width: 58ch;
+}
+
+.products-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.clean-product-card {
+  background: #ffffff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.clean-product-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(27, 53, 39, 0.35);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card-image-link {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e7e3dc;
+  position: relative;
+}
+
+.card-image-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.clean-product-card:hover .card-image-link img {
+  transform: scale(1.035);
+}
+
+.card-text {
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-head h3 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.card-head h3 a:hover {
+  color: var(--color-pine);
+}
+
+.feel-pill {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-clay);
+  background: var(--bg-soft);
+  padding: 3.5px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(125, 103, 80, 0.15);
+  letter-spacing: 0.02em;
+}
+
+.card-desc {
+  font-size: 14px;
+  line-height: 1.85;
+  margin-bottom: 22px;
+  flex-grow: 1;
+  color: var(--text-muted);
+}
+
+.card-foot {
+  padding-top: 16px;
+  border-top: 1px solid var(--line-light);
+}
+
+.card-foot .link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-pine);
+  transition: transform 0.2s var(--ease);
+}
+
+.clean-product-card:hover .card-foot .link-arrow {
+  transform: translateX(4px);
+}
+
+.notice-box {
+  margin-top: 36px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-subtle);
+}
+
+.notice-box p {
+  font-size: 12.5px;
+  color: var(--text-subtle);
+}
+
+/* ==========================================================================
+   首頁 5. 真實服務案例 (Cases Clean)
+   ========================================================================== */
+
+.cases-clean {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.cases-header {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.cases-lead {
+  font-size: 15.5px;
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.cases-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 36px;
+}
+
+.case-box {
+  background: #ffffff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-md);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.case-box:hover {
+  transform: translateY(-3px);
+  border-color: rgba(27, 53, 39, 0.3);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.case-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-clay);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.case-box h3 {
+  font-size: 19px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.case-box p {
+  font-size: 14.5px;
+  line-height: 1.85;
+  margin-bottom: 22px;
+  flex-grow: 1;
+  color: var(--text-muted);
+}
+
+.case-author {
+  font-size: 12.5px;
+  color: var(--text-subtle);
+  padding-top: 14px;
+  border-top: 1px solid var(--line-light);
+  font-weight: 500;
+}
+
+.cases-statement {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 24px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.cases-statement p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   首頁 6. 試躺流程及門市 (Visit Clean)
+   ========================================================================== */
+
+.visit-clean {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.visit-box-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 68px;
+  align-items: center;
+}
+
+.visit-visual figure {
+  height: 460px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--line-light);
+}
+
+.visit-visual .caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  font-size: 11px;
+  color: #fff;
+  background: rgba(20, 29, 23, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+}
+
+.visit-intro {
+  font-size: 16px;
+  line-height: 1.9;
+  margin: 18px 0 28px;
+  color: var(--text-muted);
+}
+
+.visit-points-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0 0 34px;
+}
+
+.visit-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.point-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  color: var(--color-pine);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(27, 53, 39, 0.08);
+  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.04);
+  margin-top: 2px;
+}
+
+.visit-point-item strong {
+  display: block;
+  font-size: 15.5px;
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+}
+
+.visit-point-item p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.visit-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   首頁 7. 常見問題 (FAQ Clean)
+   ========================================================================== */
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.faq-intro-col {
+  position: sticky;
+  top: 110px;
+}
+
+.faq-intro-col p {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin: 16px 0 28px;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-row {
+  background: #ffffff;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.faq-row:hover {
+  border-color: rgba(27, 53, 39, 0.25);
+  box-shadow: var(--shadow-card);
+}
+
+.faq-row[open] {
+  border-color: var(--color-pine);
+  box-shadow: var(--shadow-card);
+}
+
+.faq-question {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  padding: 22px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  transition: color 0.2s var(--ease);
+}
+
+.faq-question:hover {
+  color: var(--color-pine);
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-subtle);
+  transition: transform 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.faq-row[open] .faq-icon {
+  transform: rotate(45deg);
+  color: var(--color-pine);
+}
+
+.faq-answer {
+  padding: 0 26px 22px;
+  border-top: 1px solid var(--line-light);
+  margin-top: -2px;
+  padding-top: 16px;
+}
+
+.faq-answer p {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   首頁 8. 最後詢問與預約入口 (Contact Clean)
+   ========================================================================== */
+
+.contact-footer-clean {
+  background: var(--color-pine) var(--grain) repeat;
+  color: #ffffff;
+  padding-block: 80px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.contact-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.contact-footer-text h2 {
+  color: #ffffff;
+  font-size: clamp(28px, 2.8vw, 38px);
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.contact-footer-text p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.contact-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   通用內頁版型 (P02 ~ P10: Clean Subpages & Editorial Banner)
+   遵循 Anti-Slop (taste-skill)：日系非對稱雙欄雜誌佈局，拒絕單調空白
+   ========================================================================== */
+
+.page-intro-clean {
+  background: var(--bg-soft) var(--grain) repeat;
+  border-bottom: 1px solid var(--line-light);
+  padding-block: 56px 48px;
+}
+
+.page-intro-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.page-intro-inner.no-banner {
+  display: block;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: var(--text-subtle);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-pine);
+}
+
+.breadcrumb .sep {
+  margin: 0 8px;
+  opacity: 0.45;
+}
+
+.intro-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-clay);
+  margin-bottom: 10px;
+}
+
+.intro-headline h1 {
+  font-size: clamp(32px, 3.4vw, 44px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.intro-description {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--text-muted);
+  max-width: 58ch;
+}
+
+.intro-banner-col {
+  position: relative;
+}
+
+.intro-banner-card {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--line-light);
+  position: relative;
+  background: #e7e3dc;
+  margin: 0;
+}
+
+.intro-banner-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.intro-banner-card:hover img {
+  transform: scale(1.03);
+}
+
+.banner-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: rgba(20, 29, 23, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  user-select: none;
+}
+
+.subnav {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 45;
+  background: var(--color-pine);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 18px rgba(20, 29, 23, 0.18);
+  padding: 12px 0;
+  transition: all 0.25s var(--ease);
+}
+
+.subnav-flex {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 14.5px;
+  scrollbar-width: none;
+}
+
+.subnav-flex::-webkit-scrollbar {
+  display: none;
+}
+
+.subnav-flex a {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.2s var(--ease);
+}
+
+.subnav-flex a:hover,
+.subnav-flex a.active {
+  color: #ffffff;
+}
+
+.subnav-flex a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.25s var(--ease);
+}
+
+.subnav-flex a:hover::after,
+.subnav-flex a.active::after {
+  width: 100%;
+}
+
+.editorial-clean {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.editorial-photo figure {
+  height: 440px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.editorial-photo .caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  font-size: 11px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.editorial-text h2 {
+  margin-bottom: 16px;
+}
+
+.editorial-action {
+  margin-top: 24px;
+}
+
+.quote-text {
+  font-size: 16.5px;
+  font-style: italic;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+/* 選床卡片 */
+.guide-card {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  padding: 32px 30px;
+  margin-bottom: 22px;
+  scroll-margin-top: 140px;
+}
+
+.guide-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.guide-card p {
+  font-size: 14.5px;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+.inline-tip {
+  font-size: 12.5px !important;
+  color: var(--text-subtle) !important;
+  padding-left: 10px;
+  border-left: 2px solid var(--line-color);
+}
+
+.checklist-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.checklist-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+}
+
+.card-num {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--color-clay);
+  flex-shrink: 0;
+}
+
+.checklist-card h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.checklist-card p {
+  font-size: 13.5px;
+  margin: 0;
+}
+
+.center-btn-row {
+  text-align: center;
+  margin-top: 36px;
+}
+
+/* 篩選欄與表格 */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.filter-bar a.active {
+  font-weight: 600;
+  color: var(--color-pine);
+  border-bottom: 1px solid var(--color-pine);
+}
+
+.table-container {
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  margin-block: 28px;
+}
+
+.clean-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.clean-table th, .clean-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.clean-table thead th {
+  background: var(--bg-soft);
+  font-weight: 600;
+}
+
+.clean-table tbody th {
+  font-weight: 500;
+  width: 160px;
+  background: rgba(250, 249, 246, 0.4);
+}
+
+.compare-cta-box {
+  text-align: center;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  margin-top: 20px;
+}
+
+.compare-cta-box p {
+  font-size: 14.5px;
+  margin-bottom: 14px;
+}
+
+/* 商品卡片 Grid */
+.products-grid-clean {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.product-item-clean {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-thumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e9e5dc;
+}
+
+.product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+
+.product-item-clean:hover .product-thumb img {
+  transform: scale(1.03);
+}
+
+.product-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-info-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.product-feel-label {
+  font-size: 12px;
+  color: var(--color-clay);
+}
+
+.product-line {
+  font-size: 13.5px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.product-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-block: 12px;
+  border-block: 1px solid var(--line-light);
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.product-meta-row span {
+  display: block;
+  color: var(--text-subtle);
+}
+
+.product-meta-row strong {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.product-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.source-label {
+  font-size: 12px;
+  color: var(--text-subtle);
+  margin-top: 20px;
+}
+
+/* 商品詳細頁 (Product Detail Clean) */
+.product-hero-clean {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-bottom: 48px;
+}
+
+.product-hero-pic figure {
+  aspect-ratio: 1.15;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.product-tag-pill {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--color-clay);
+  background: var(--bg-soft);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+}
+
+.product-lead-text {
+  font-size: 16px;
+  line-height: 1.85;
+  margin: 12px 0 24px;
+}
+
+.product-meta-list {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  padding: 6px 18px;
+  margin-bottom: 24px;
+}
+
+.product-meta-list div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-light);
+  font-size: 13.5px;
+}
+
+.product-meta-list div:last-child {
+  border-bottom: 0;
+}
+
+.product-meta-list dt {
+  color: var(--text-subtle);
+}
+
+.product-meta-list dd {
+  font-weight: 500;
+  text-align: right;
+  margin: 0;
+}
+
+.product-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tip-text {
+  font-size: 12px;
+  color: var(--text-subtle);
+  margin-top: 16px;
+}
+
+.product-sections-container {
+  padding-block: 30px;
+}
+
+.section-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 50px;
+  padding-block: 44px;
+  border-bottom: 1px solid var(--line-color);
+  scroll-margin-top: 130px;
+}
+
+.body-lead {
+  font-size: 16px !important;
+  color: var(--text-main) !important;
+  font-weight: 500;
+}
+
+.layer-box-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-block: 16px;
+}
+
+.layer-box {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 13.5px;
+}
+
+.size-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.size-chips-wrap span {
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+/* 門市資訊頁 */
+.store-banner figure {
+  height: 440px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.store-dl {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+}
+
+.store-dl div {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-light);
+  font-size: 14px;
+}
+
+.store-dl div:last-child {
+  border-bottom: 0;
+}
+
+.store-dl dt {
+  color: var(--color-clay);
+  font-weight: 500;
+}
+
+.store-dl dd {
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* 知識庫與文章閱讀 */
+.journal-columns {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.journal-lead-card {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.journal-lead-pic {
+  aspect-ratio: 1.45;
+  display: block;
+}
+
+.journal-lead-content {
+  padding: 28px;
+}
+
+.journal-lead-content h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.journal-lead-content p {
+  font-size: 14.5px;
+  margin-bottom: 20px;
+}
+
+.journal-small-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.journal-small-item {
+  background: #ffffff;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+
+.journal-category {
+  font-size: 11.5px;
+  color: var(--color-clay);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.journal-small-item h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.journal-small-item p {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.reading-clean {
+  padding-block: 20px 64px;
+}
+
+.article-lead-clean {
+  font-size: 19px !important;
+  color: var(--text-main) !important;
+  border-left: 2px solid var(--color-pine);
+  padding-left: 16px;
+  margin-bottom: 30px;
+}
+
+.article-photo-box figure {
+  height: 380px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+
+.article-paragraph {
+  margin-bottom: 30px;
+}
+
+.article-paragraph h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.article-paragraph p {
+  font-size: 15.5px;
+  line-height: 1.95;
+  margin-bottom: 14px;
+}
+
+.article-cta-box {
+  background: var(--bg-soft);
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  margin-top: 48px;
+}
+
+.article-cta-box h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.article-cta-box p {
+  font-size: 14.5px;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  margin-top: 30px;
+}
+
+/* 底部 Closing */
+.bottom-closing {
+  background: var(--color-pine);
+  color: #ffffff;
+  padding-block: 80px 72px;
+  text-align: center;
+}
+
+.bottom-closing-inner {
+  max-width: 600px;
+}
+
+.bottom-closing h2 {
+  color: #ffffff;
+  font-size: clamp(28px, 2.8vw, 38px);
+  margin-bottom: 16px;
+}
+
+.bottom-closing p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.bottom-closing .actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   頁尾 (Site Footer Clean)
+   ========================================================================== */
+
+.site-footer {
+  background: #142119;
+  color: #ffffff;
+  padding: 64px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-brand .brand-mark {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.footer-brand .brand-name {
+  color: #ffffff;
+}
+
+.footer-summary {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  margin-top: 16px;
+  max-width: 360px;
+}
+
+.footer-address {
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+}
+
+.footer-address span {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 2px;
+}
+
+.footer-heading {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer-col-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-link {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.preview-disclaimer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ==========================================================================
+   諮詢彈窗 (Dialog Clean)
+   ========================================================================== */
+
+.contact-dialog {
+  width: min(540px, 92%);
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
+  padding: 36px 32px;
+  background: var(--bg-page);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.contact-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: var(--text-muted);
+}
+
+.dialog-inner h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.dialog-lead {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.dialog-input {
+  width: 100%;
+  min-height: 140px;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.8;
+  background: #ffffff;
+  resize: vertical;
+}
+
+.dialog-input:focus {
+  outline: none;
+  border-color: var(--color-pine);
+}
+
+.dialog-btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.status {
+  min-height: 20px;
+  font-size: 12.5px;
+  color: var(--color-pine);
+  margin-top: 10px;
+}
+
+/* 手機底部常駐列 */
+.mobile-bar {
+  display: none;
+}
+
+/* ==========================================================================
+   響應式規則 (Responsive)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  :root {
+    --header-h: 70px;
+  }
+
+  .site-header {
+    height: var(--header-h);
+  }
+
+  .desktop-nav,
+  .header-action .btn-header {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-panel {
+    position: fixed;
+    top: var(--header-h);
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 45;
+    background: var(--bg-page);
+    padding: 28px 6% 100px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .menu-panel.open {
+    display: flex;
+  }
+
+  .mobile-nav-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-link {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .mobile-menu-foot {
+    margin-top: 32px;
+  }
+
+  .mobile-menu-foot p {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+
+  .btn-block {
+    width: 100%;
+  }
+
+  .entrances-row,
+  .products-cards,
+  .cases-columns,
+  .products-grid-clean {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .method-grid,
+  .visit-box-layout,
+  .faq-layout,
+  .editorial-clean,
+  .product-hero-clean,
+  .section-row,
+  .store-grid,
+  .journal-columns,
+  .page-intro-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .intro-banner-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .faq-intro-col {
+    position: static;
+  }
+
+  .contact-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* 行動端常駐雙列 */
+  .mobile-bar {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    position: fixed;
+    bottom: 0;
+    inset-inline: 0;
+    z-index: 40;
+    background: #ffffff;
+    border-top: 1px solid var(--line-color);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-bar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .mobile-bar-btn.btn-line {
+    background: var(--color-pine);
+    color: #ffffff;
+  }
+
+  .mobile-bar-btn.btn-visit {
+    background: #ffffff;
+    color: var(--text-main);
+    border-left: 1px solid var(--line-color);
+  }
+
+  body {
+    padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-block: 60px;
+  }
+
+  .hero-clean {
+    min-height: 520px;
+  }
+
+  .hero-content {
+    padding-block: 50px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

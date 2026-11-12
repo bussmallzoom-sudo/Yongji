@@ -1,0 +1,65 @@
+/* V2: contemporary Taiwanese typography with quiet editorial spacing. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap');
+:root{--paper:#faf9f5;--ink:#263d35;--muted:#68726d;--cream:#efede5;--line:#dcded5;--clay:#8d7155;--font-body:'Manrope','Noto Sans TC','Microsoft JhengHei',sans-serif}
+body{font-family:var(--font-body);font-size:15px;line-height:1.95;letter-spacing:.025em}
+h1,h2,h3,.serif,.brand-mark,.brand-name,.intro-line p,.article-lead{font-family:var(--font-body);font-synthesis:none}
+h1,h2{font-weight:300;letter-spacing:.065em;text-wrap:balance}
+h1{font-size:clamp(42px,4.6vw,70px);line-height:1.55}
+h2{font-size:clamp(30px,2.8vw,43px);line-height:1.65}
+h3{font-weight:400;letter-spacing:.035em;line-height:1.65}
+p{line-height:2.05;letter-spacing:.03em}
+.eyebrow{font-family:var(--font-body);font-size:10px;font-weight:500;line-height:1.8;letter-spacing:.17em}
+.brand-mark{width:39px;height:43px;font-size:25px;font-weight:300;border-color:#8d9b90}
+.brand-name{font-size:18px;font-weight:500;letter-spacing:.18em}
+.brand-name small{font:8px/1.8 'Manrope',sans-serif;letter-spacing:.2em}
+.site-header{height:92px;border-bottom-color:#e5e6df;padding:0 5%}
+.desktop-nav{gap:28px}.desktop-nav a{font-size:12px;font-weight:400;letter-spacing:.055em}
+.nav-contact{padding:9px 18px;font-family:var(--font-body);letter-spacing:.05em;border-color:#b3bcb3}
+.hero{height:min(760px,calc(100svh - 120px));min-height:620px;color:var(--ink);background:#efeee6}
+.hero>img{left:45%;width:55%;height:100%;object-position:53% center}
+.hero:after{display:none}
+.hero-content{padding-top:120px}
+.hero h1{max-width:43%;font-weight:300;font-size:clamp(42px,4.25vw,65px);line-height:1.6;letter-spacing:.07em}
+.hero .eyebrow{max-width:36%;font-size:9px;line-height:2.2;letter-spacing:.14em;color:var(--clay);margin-bottom:30px}
+.hero p{color:var(--muted);max-width:36%;font-size:13px;line-height:2.1;margin-top:27px}
+.hero .text-link{color:var(--ink);border-color:#7b8c7c;font-size:12px}
+.hero-bottom{bottom:28px;left:6%;right:2%;font-size:9px;letter-spacing:.06em;color:var(--muted)}
+.hero-bottom span:last-child{background:#faf9f5e8;padding:5px 9px;font-size:8px;color:#58675c}
+.preview-tag{background:#f4f2ea;color:#827862;border-color:#e5e4db;font-size:9px}
+.section{padding:115px 0}.section-head{margin-bottom:50px}
+.intro-line{padding:48px 0}.intro-line p{font-size:23px;font-weight:300;line-height:1.9;letter-spacing:.06em}
+.need{padding:30px 0}.need h3{font-size:21px;font-weight:400}.need p{font-size:12px;letter-spacing:.035em}
+.need small,.product .product-title span{font-family:'Manrope',sans-serif;font-style:normal;font-size:11px;letter-spacing:.07em}
+.editorial .quote{font-size:clamp(27px,2.7vw,40px);font-weight:300;line-height:1.8;letter-spacing:.055em}
+.editorial .quote:before{font-family:Georgia,serif;font-size:70px;font-weight:400;opacity:.6;margin-bottom:5px}
+.editorial .copy p{font-size:14px;line-height:2.15}.editorial figure{height:590px}
+.products{gap:35px}.product figure{aspect-ratio:4/4.4}.product h3{font-size:24px;font-weight:400;letter-spacing:.08em}
+.product p{font-size:12px;line-height:1.95}.product .product-title{padding-top:25px}
+.button{font-size:12px;letter-spacing:.07em;min-height:50px;padding:13px 25px;font-weight:400}
+.button.light{border-color:#b2bcb1}.text-link{font-size:12px;letter-spacing:.04em;padding:12px 0;gap:35px}
+.text-link:after,.button:after{font-family:Arial,sans-serif;font-weight:400;font-size:18px}
+.service-band{background:#2c4237}.service-band h2{font-weight:300;line-height:1.75;letter-spacing:.06em}
+.service-band .copy>p{font-size:13px;line-height:2.1}.service-band .copy{padding-top:95px;padding-bottom:95px}
+.service-steps li{padding:17px 0;font-size:12px}.service-steps em{font-family:'Manrope',sans-serif;font-size:11px;font-style:normal}
+.journal-list h3{font-size:24px;font-weight:400;line-height:1.75}.journal-list p{font-size:13px;margin-top:12px}
+.journal-small{padding:28px 0;grid-template-columns:65px 1fr;gap:22px}
+.journal-small .number{font:300 29px/1.8 'Manrope',sans-serif;color:#8e9a8d}
+.journal-small h3{font-size:20px;line-height:1.8}.journal-small small{font-family:'Manrope','Noto Sans TC',sans-serif;font-size:9px;letter-spacing:.1em}
+summary{font-size:14px;font-weight:400;line-height:1.8;letter-spacing:.03em;padding:25px 0}
+details p{font-size:13px;line-height:2.05}.closing h2{font-weight:300;letter-spacing:.075em}.closing p{font-size:13px}
+.page-intro{padding-top:72px;padding-bottom:65px}.page-intro h1{font-size:clamp(36px,4.2vw,60px);font-weight:300;line-height:1.6}
+.page-intro p{font-size:14px;line-height:2.05}.breadcrumb{font-size:10px;letter-spacing:.05em;margin-bottom:40px}
+.subnav{top:92px;font-size:12px;letter-spacing:.05em;padding-top:18px;padding-bottom:18px;border-color:#e0e2d9}
+.product-hero h2{font-size:42px;font-weight:300;letter-spacing:.09em}.product-hero .description{font-size:14px;margin-top:20px}
+.meta-row{font-size:12px;line-height:1.9}.detail-grid h2{font-size:29px;font-weight:300;line-height:1.8}.detail-grid p{font-size:14px}
+.empty-spec h3{font-size:23px;font-weight:300;margin-bottom:15px}.compare th,.compare td{font-size:12px;line-height:1.9}
+.steps-light .num{font:300 30px/1.7 'Manrope',sans-serif}.steps-light h3{font-size:24px;font-weight:300;line-height:1.8}.steps-light article>p{font-size:13px}
+.store-info h3{font-size:34px;font-weight:300;letter-spacing:.08em}.store-info>div>p{font-size:14px}.store-info dl>div{font-size:12px}
+.guide-note h3{font-size:25px;font-weight:300}.guide-note p{font-size:14px}
+.reading h2{font-size:28px;font-weight:400;line-height:1.8}.reading p{font-size:15px;line-height:2.2}.article-lead{font-size:23px!important;font-weight:300;letter-spacing:.06em;line-height:2!important}
+.contact-dialog h2{font-size:29px;font-weight:300}.contact-dialog p{font-size:13px}.footer-links{font-size:12px;line-height:1.9}.footer-links .eyebrow{font-size:9px}
+.footer-bottom{letter-spacing:.07em}.note,.source-label{font-size:11px;line-height:1.9}.caption{font-size:9px;letter-spacing:.04em}
+@media(min-width:1500px){.hero-content{padding-top:140px}}
+@media(max-width:1050px){.site-header{padding:0 4%}.desktop-nav{gap:16px}.desktop-nav a{font-size:11px}.hero-content{padding-top:110px}.hero h1{font-size:44px;letter-spacing:.035em}.hero p{max-width:36%;font-size:12px}.hero .eyebrow{max-width:36%;font-size:8px}.editorial figure{height:490px}}
+@media(max-width:760px){body{font-size:14px}.site-header{height:72px;padding:0 5%}.brand-mark{width:32px;height:36px;font-size:22px}.brand-name{font-size:16px;letter-spacing:.13em}.brand-name small{font-size:7px}.nav-contact{padding:7px 11px}.hero{height:760px;max-height:none;min-height:0}.hero>img{left:0;width:100%;height:350px;object-position:center 56%}.hero-content{padding-top:390px}.hero h1{font-size:38px;max-width:none;line-height:1.6;letter-spacing:.08em}.hero .eyebrow{font-size:8px;max-width:none;margin-bottom:18px;letter-spacing:.12em;line-height:1.8}.hero p{max-width:none;font-size:12px;line-height:2.05;margin-top:18px}.hero .actions{margin-top:15px}.hero-bottom{left:6%;right:6%;bottom:18px;align-items:center}.hero-bottom span:first-child{font-size:8px}.hero-bottom span:last-child{display:block;position:absolute;top:-425px;right:0;font-size:8px;background:#faf9f5dc}.section{padding:72px 0}h2{font-size:30px;line-height:1.7;letter-spacing:.055em}.intro-line{padding:35px 0}.intro-line p{font-size:20px;font-weight:300;line-height:1.9}.need{padding:24px 0}.need h3{font-size:20px}.section-head{margin-bottom:30px}.editorial figure{height:400px}.editorial .quote{font-size:29px;line-height:1.8}.editorial .copy p{font-size:13px}.products{gap:40px}.product figure{aspect-ratio:1.08}.product h3{font-size:23px}.product .product-title span{font-size:10px}.service-band .copy{padding-top:60px;padding-bottom:65px}.service-band h2{font-size:30px}.service-band figure{height:350px}.journal-list h3{font-size:22px}.journal-small h3{font-size:19px}.journal-small .number{font-size:27px}.closing h2{font-size:29px}.page-intro{padding:38px 0 43px}.page-intro h1{font-size:35px;line-height:1.65;letter-spacing:.05em}.page-intro p{font-size:13px}.breadcrumb{margin-bottom:27px;font-size:9px}.subnav{top:72px;padding-top:15px;padding-bottom:15px;font-size:11px}.detail-grid h2{font-size:27px}.detail-grid p{font-size:13px}.product-hero h2{font-size:34px}.steps-light h3{font-size:22px}.steps-light .num{font-size:27px}.guide-note p{font-size:13px}.store-info h3{font-size:29px}.reading h2{font-size:25px}.reading p{font-size:14px;line-height:2.15}.article-lead{font-size:21px!important}.contact-dialog h2{font-size:27px}summary{font-size:13px}.mobile-bar>*{font-family:var(--font-body);font-size:12px;letter-spacing:.04em}}
+@media(max-width:380px){.hero{height:745px}.hero>img{height:325px}.hero-content{padding-top:360px}.hero h1{font-size:35px}.hero-bottom span:last-child{top:-423px}.site-header>.nav-contact{display:none}}

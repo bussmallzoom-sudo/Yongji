@@ -1,0 +1,41 @@
+/* White surfaces with a faint, neutral paper texture. */
+:root{
+  --paper:#fff;
+  --cream:#fafafa;
+  --line:#d9ded8;
+  --ink:#252f2a;
+  --muted:#59655e;
+  --paper-grain:url('./assets/paper-grain.svg');
+}
+body,.site-header,.subnav,.home-collection,.section.sand,
+.needs-content,.home-faq,.visit-plaque,.contact-dialog,
+.compare th,.empty-spec,.related,.menu-panel{
+  background-color:#fff;
+  background-image:var(--paper-grain);
+  background-size:240px 240px;
+}
+.site-header{border-color:#e8ebe6;box-shadow:none}
+.home-service-strip{border-color:#d9ded8}
+.home-collection,.section.sand,.home-faq{
+  border-top:1px solid #eeeeec;
+  border-bottom:1px solid #eeeeec;
+}
+.needs-content{border:1px solid #e1e5de;box-shadow:none}
+.visit-plaque,.contact-dialog{
+  border:1px solid #e5e8e2;
+  box-shadow:0 8px 28px rgba(35,44,31,.07);
+}
+.button.white{background-color:#fff;border-color:#fff}
+.button.white:hover{background-color:#f5f5f3;border-color:#f5f5f3}
+.button.light{background-color:transparent}
+.button.light:hover{background-color:#f5f6f3}
+.button,.nav-contact{box-shadow:none}
+.collection-layout figure,.journal-covers figure,.owner-photo figure{outline:none}
+.collection-help{border-color:#d9ded8}
+.home-end{border-top:1px solid #eeeeec}
+.site-footer{background-color:#203e2d;background-image:none;border-top:0}
+.mobile-bar{background-color:#fff;border-top-color:#d9ded8}
+.mobile-bar>a{background-color:#fff;background-image:var(--paper-grain)}
+@media(max-width:760px){
+  .home-visit{background-color:#fff;background-image:var(--paper-grain)}
+}

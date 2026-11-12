@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+const html=fs.readFileSync('dist/index.html','utf8');
+const main=html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+const actual=[...main.matchAll(/data-home-section="([^"]+)"/g)].map(x=>x[1]);
+const expected=['brand','entrances','method','products','cases','visit','faq','contact'];
+if(JSON.stringify(actual)!==JSON.stringify(expected))throw Error('Homepage section order does not match owner brief.');
+const nav=html.match(/<nav class="desktop-nav"[\s\S]*?<\/nav>/)[0];
+if((nav.match(/<a /g)||[]).length!==5)throw Error('Expected five primary navigation items.');
+if((html.match(/rel="stylesheet"/g)||[]).length!==1)throw Error('Expected one active stylesheet.');
+const portable=fs.readFileSync('portable/index.html','utf8');
+if(!portable.includes('data-home-section="cases"')||!portable.includes('href="site.css"'))throw Error('Portable copy is outdated.');
+console.log('PASS: eight ordered homepage sections, five primary navigation items, one active stylesheet, synchronized portable copy.');
+console.log('Homepage visible characters: '+main.replace(/<[^>]*>/g,'').replace(/\s/g,'').length+' (previous: 1176).');

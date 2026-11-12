@@ -2129,16 +2129,70 @@ p {
 }
 
 /* ==========================================================================
-   響應式規則 (Responsive)
+   響應式規則與手機版全面精品化 (Mobile-First Editorial Polish)
    ========================================================================== */
 
 @media (max-width: 900px) {
   :root {
-    --header-h: 70px;
+    --header-h: 62px;
   }
 
+  html {
+    scroll-padding-top: 120px;
+  }
+
+  .wrap,
+  .narrow {
+    width: 91%;
+  }
+
+  .section {
+    padding-block: 52px;
+  }
+
+  .section-sm {
+    padding-block: 36px;
+  }
+
+  h1 {
+    font-size: clamp(25px, 6.8vw, 32px);
+    line-height: 1.36;
+  }
+
+  h2 {
+    font-size: clamp(22px, 5.8vw, 27px);
+    line-height: 1.38;
+  }
+
+  h3 {
+    font-size: 18.5px;
+    line-height: 1.4;
+  }
+
+  /* 1. 頂部導覽列精緻化 */
   .site-header {
     height: var(--header-h);
+    padding: 0 4.5%;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+    letter-spacing: 0.1em;
+  }
+
+  .brand-name small {
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
   }
 
   .desktop-nav,
@@ -2147,7 +2201,10 @@ p {
   }
 
   .menu-toggle {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 6px 12px;
   }
 
   .menu-panel {
@@ -2155,9 +2212,9 @@ p {
     top: var(--header-h);
     inset-inline: 0;
     bottom: 0;
-    z-index: 45;
+    z-index: 48;
     background: var(--bg-page);
-    padding: 28px 6% 100px;
+    padding: 24px 6% 96px;
     overflow-y: auto;
     display: none;
     flex-direction: column;
@@ -2175,22 +2232,109 @@ p {
 
   .mobile-link {
     font-family: var(--font-serif);
-    font-size: 20px;
-    padding: 16px 0;
+    font-size: 19px;
+    padding: 15px 0;
     border-bottom: 1px solid var(--line-light);
   }
 
   .mobile-menu-foot {
-    margin-top: 32px;
+    margin-top: 28px;
   }
 
   .mobile-menu-foot p {
     font-size: 13.5px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .btn-block {
     width: 100%;
+  }
+
+  /* 2. 首屏 Hero 手機版「上文下景」雜誌式排版 —— 解決斷行、壓圖與擁擠 */
+  .hero-clean {
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--bg-soft) var(--grain) repeat;
+    padding-bottom: 28px;
+  }
+
+  .hero-content {
+    order: 1;
+    padding-block: 28px 20px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-pretitle {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .hero-clean h1 {
+    font-size: clamp(26px, 7vw, 32px);
+    line-height: 1.36;
+    letter-spacing: 0;
+    margin-bottom: 12px;
+  }
+
+  .hero-desc {
+    font-size: 14.5px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+  }
+
+  .hero-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .hero-btns .btn {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    width: 100%;
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    inset: auto;
+    order: 2;
+    width: 91%;
+    margin-inline: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--line-light);
+  }
+
+  .hero-image-wrap img {
+    object-position: center center;
+  }
+
+  .hero-dim {
+    display: none;
+  }
+
+  .image-note {
+    bottom: 36px;
+    right: 6.5%;
+    font-size: 10px;
+    padding: 3px 8px;
+    background: rgba(20, 29, 23, 0.72);
+    color: #ffffff;
+    border: none;
+  }
+
+  /* 3. 三大需求入口緊湊化 */
+  .entrances-clean {
+    padding-block: 32px 16px;
   }
 
   .entrances-row,
@@ -2198,9 +2342,31 @@ p {
   .cases-columns,
   .products-grid-clean {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
 
+  .entrance-item {
+    padding: 22px 20px;
+  }
+
+  .entrance-icon-box {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 14px;
+  }
+
+  .entrance-item h2 {
+    font-size: 19.5px;
+    margin-bottom: 8px;
+  }
+
+  .entrance-item p {
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  /* 4. 圖文雙欄與配圖比例黃金化 (消除 480px 超高圖片) */
   .method-grid,
   .visit-box-layout,
   .faq-layout,
@@ -2211,38 +2377,222 @@ p {
   .journal-columns,
   .page-intro-inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 24px;
   }
 
-  .intro-banner-card {
-    aspect-ratio: 16 / 9;
+  .method-figure figure,
+  .visit-visual figure,
+  .editorial-photo figure,
+  .store-banner figure,
+  .article-photo-box figure {
+    height: auto;
+    aspect-ratio: 16 / 10;
   }
 
+  .method-intro,
+  .visit-intro {
+    font-size: 14.5px;
+    line-height: 1.8;
+    margin: 12px 0 20px;
+  }
+
+  .method-steps-list {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .method-step {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .step-content h3 {
+    font-size: 15.5px;
+  }
+
+  .step-content p {
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .method-links,
+  .visit-cta-row,
+  .product-hero-buttons,
+  .contact-footer-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .method-links .btn,
+  .visit-cta-row .btn,
+  .product-hero-buttons .btn,
+  .contact-footer-actions .btn {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    width: 100%;
+  }
+
+  /* 5. 產品卡片與案例區塊手機優化 */
+  .section-title-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .card-text,
+  .product-info {
+    padding: 20px;
+  }
+
+  .card-head h3 {
+    font-size: 20px;
+  }
+
+  .case-box {
+    padding: 24px 20px;
+  }
+
+  .cases-statement {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+  }
+
+  /* 6. FAQ 與底部預約區 */
   .faq-intro-col {
     position: static;
+  }
+
+  .faq-intro-col p {
+    margin: 10px 0 18px;
+    font-size: 14.5px;
+  }
+
+  .faq-question {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+
+  .faq-answer {
+    padding: 12px 18px 16px;
+  }
+
+  .faq-answer p {
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+
+  .contact-footer-clean {
+    padding-block: 48px;
   }
 
   .contact-footer-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .contact-footer-text p {
+    font-size: 14.5px;
+  }
+
+  /* 7. 分頁頂部 Banner 與次選單 */
+  .page-intro-clean {
+    padding-block: 28px 28px;
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .intro-eyebrow {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .intro-headline h1 {
+    font-size: clamp(24px, 6.6vw, 30px);
+    margin-bottom: 10px;
+  }
+
+  .intro-description {
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+
+  .intro-banner-card {
+    aspect-ratio: 16 / 10;
+  }
+
+  .subnav {
+    padding: 10px 0;
+  }
+
+  .subnav-flex {
+    gap: 22px;
+    font-size: 13.5px;
+  }
+
+  .guide-card {
+    padding: 22px 20px;
+    margin-bottom: 16px;
+  }
+
+  .checklist-card {
+    padding: 16px 18px;
+    gap: 14px;
+  }
+
+  .store-dl {
+    padding: 18px 20px;
+  }
+
+  .store-dl div {
+    grid-template-columns: 76px 1fr;
+    gap: 12px;
+    font-size: 13.5px;
+  }
+
+  .bottom-closing {
+    padding-block: 52px 48px;
+  }
+
+  .bottom-closing .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .bottom-closing .btn-large {
+    min-height: 46px;
+    padding: 10px 14px;
+    font-size: 14px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
   }
 
-  /* 行動端常駐雙列 */
+  /* 8. 行動端底部常駐雙列（輕巧精緻化） */
   .mobile-bar {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1.1fr 1fr;
     position: fixed;
     bottom: 0;
     inset-inline: 0;
     z-index: 40;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--line-color);
+    box-shadow: 0 -4px 16px rgba(20, 29, 23, 0.06);
     padding-bottom: env(safe-area-inset-bottom);
   }
 
@@ -2250,9 +2600,10 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 10px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 13px 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   .mobile-bar-btn.btn-line {
@@ -2261,31 +2612,24 @@ p {
   }
 
   .mobile-bar-btn.btn-visit {
-    background: #ffffff;
+    background: transparent;
     color: var(--text-main);
     border-left: 1px solid var(--line-color);
   }
 
   body {
-    padding-bottom: 64px;
+    padding-bottom: 52px;
   }
 }
 
-@media (max-width: 480px) {
-  .section {
-    padding-block: 60px;
-  }
-
-  .hero-clean {
-    min-height: 520px;
-  }
-
-  .hero-content {
-    padding-block: 50px;
-  }
-
-  .btn {
-    width: 100%;
+@media (max-width: 370px) {
+  .hero-btns,
+  .method-links,
+  .visit-cta-row,
+  .product-hero-buttons,
+  .contact-footer-actions,
+  .bottom-closing .actions {
+    grid-template-columns: 1fr;
   }
 }
 

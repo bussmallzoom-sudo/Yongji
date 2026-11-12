@@ -79,20 +79,24 @@
 
 ---
 
-## 8. 四色溫潤分區節奏、大小字階層比例與寬裕呼吸留白升級
+## 8. 嚴格執行 `design-taste-frontend` (Anti-Slop) 建築感家具展間重構
 
-針對使用者回饋「網站太白、字太多感覺擠在一起、大字小字比例要清楚、中間要有間距且區域要有不同顏色」進行全面升級：
-- **四色溫潤滿版分區節奏（告別全站慘白）**：
-  - 將首頁與內頁所有 `<section>` 升級為 100% 滿版色塊，依序交錯四種日系自然色彩：
-    1. **首屏實景區 (`brand`)**：移除原本遮住 2/3 照片的慘白漸層，改為溫潤亞麻毛玻璃卡片（`rgba(247, 242, 234, 0.92)` ＋ `5px` 深松綠左邊條），讓背景陽光臥室清晰溫潤。
-    2. **溫潤亞麻米砂區 (`#eae1d3`)**：用於「三大需求入口」與「常見問題」，讓上方的純白卡片（`#ffffff`）立體浮現。
-    3. **純淨暖棉白區 (`#ffffff`)**：用於「闆娘選床三步驟」與「門市試躺」，內部搭配暖燕麥色（`#f0e8dc`）與晨霧綠（`#e6efe9`）步驟卡。
-    4. **靜謐晨霧鼠尾草綠區 (`#dfe9e2`)**：用於「精選三款床墊」與比較區塊，草木灰綠色調讓視覺煥然一新。
-    5. **暖陶燕麥色區 (`#f0e8dc`)**：用於「真實選床故事」，搭配陶土金左邊條白卡。
-    6. **深松森林綠區 (`#172e21`)**：用於底部行動召喚，沉穩收尾。
-- **拉開「大字、中字、小字」黃金視覺比例**：
-  - **小字標籤化**：所有眉標（`.sub-label`、`.entrance-hint`、`.case-tag`）改為圓角膠囊標籤（Pill Badge），一眼識別分類。
-  - **大字醒目化**：主標 `h1`、`h2`、`h3` 拉大字級並加深為濃墨黑 `#111a14`，與內文形成 2.5 倍以上視覺落差。
-  - **中字重點化**：首屏新增獨立副標 `.hero-lead-tag`（「不急著賣你，先陪你選對。」），三款床墊卡片新增 `.card-target`（「推薦對象」色塊條），不用讀長文就能秒懂重點。
-  - **內文輕量化**：內文改為 `15px` 柔和松灰 `#46544a`，行距 `1.95`，告別黑壓壓的文字牆。
-- **寬裕呼吸間距**：區塊上下留白擴大至 `108px`，標題與卡片距離擴大至 `52px`，卡片內距擴大至 `38px 34px`。
+- **Design Read**: *"Reading this as: consumer furniture & mattress showroom for local home buyers, with a calm Japanese/Nordic architectural editorial language (Muji / Frama / Carl Hansen), leaning toward native CSS asymmetric grids + natural limestone/travertine surfaces + hairline dividers."*
+- **Three Dials**: `DESIGN_VARIANCE: 7` | `MOTION_INTENSITY: 4` | `VISUAL_DENSITY: 3`
+- **徹底剷除 AI 模板特徵 (Section 4.7 & Section 9 AI Tells)**：
+  1. **零膠囊標籤 (Zero Pill Badges)**：全站刪除所有 `border-radius: 999px` 的灰底/綠底膠囊小標（`.sub-label`、`.feel-pill`），遵循 `EYEBROW RESTRAINT` 規則，直接以大標題說話。
+  2. **首屏改為 `Asymmetric Split Hero`（5:7 左文右景）**：拿掉壓在照片上的圓角浮動框與左側粗綠線；左側為乾淨俐落的文字排版，右側為完整無遮擋的陽光臥室攝影，圖說安靜置於圖片下方（遵循 `NO pills/labels overlaid on images`）。
+  3. **廢除薄荷綠與三等分白盒卡片**：移除廉價粉綠（`#dfe9e2`）與「白卡片＋頂部/左側粗色條」的 SaaS 模板感，改為北歐與日系家具展間的**三階礦物石材色盤**：
+     - 暖調雪花石膏（`#f6f3ec` Soft Alabaster）
+     - 溫潤亞麻石灰岩（`#ebe5da` Warm Limestone）
+     - 沉穩洞石大地色（`#dfd7c9` Deep Travertine Stone）
+     - 深林松木墨綠（`#17251c` Deep Forest Anchor）
+  4. **首頁 8 大區塊採用 6 種不同雜誌版型（遵循 `Section-Layout-Repetition Ban` 與 `Cards omitted in favor of spacing/hairlines`）**：
+     - `brand`：5:7 非對稱雙欄建築感首屏
+     - `entrances`：4:8 左標固定、右側橫向 `1px` 結構細線索引列（取代三張白卡片）
+     - `method`：5:7 左側直幅影像、右側三欄無框水平線性流程（移除 `01/02/03` 編號方框）
+     - `products`：無外框家具畫廊目錄（4:3 實景大圖＋底部 `1px` 濃黑結構線＋26px 大字品名）
+     - `cases`：雙欄雜誌大引言（`blockquote` 22px 襯線體，無外框白盒）
+     - `visit`：6:6 左文右圖＋雙欄表格式細線重點
+     - `faq`：4:8 極簡細線摺疊列（無陰影白盒）
+     - `contact`：深林松木墨綠滿版收尾

@@ -118,7 +118,6 @@ const intro = (eyebrow, title, desc, bread = '', banner = '') => `
   <div class="wrap page-intro-inner${banner ? '' : ' no-banner'}">
     <div class="intro-headline">
       <div class="breadcrumb"><a href="/">首頁</a> <span class="sep">/</span> <span>${bread || title.replaceAll('<br>', '')}</span></div>
-      ${eyebrow ? `<span class="intro-eyebrow">${eyebrow}</span>` : ''}
       <h1>${title}</h1>
       ${desc ? `<p class="intro-description">${desc}</p>` : ''}
     </div>
@@ -126,7 +125,6 @@ const intro = (eyebrow, title, desc, bread = '', banner = '') => `
     <div class="intro-banner-col">
       <figure class="intro-banner-card">
         <img src="${banner}" alt="${bread || title.replaceAll('<br>', '')} 情境空間示意" loading="eager" width="1200" height="750">
-        <span class="banner-badge">生活空間情境</span>
       </figure>
     </div>` : ''}
   </div>
@@ -270,10 +268,9 @@ ${intro('選床指南', '不是先背材質，<br>是先把需求問對。', '�
   </div>
 </nav>
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <div class="wrap editorial-clean">
     <div class="editorial-text">
-      <span class="sub-label">選床第一步</span>
       <h2>從每天早晨的感受，<br>找選床的線索。</h2>
       <p>現在的床是偏硬、偏軟，還是翻身時腰部常常懸空？平常是仰睡還是側睡比較多？把這些日常的細節記下來，到店試躺時才有清楚的比較依據。</p>
       <div class="editorial-action">
@@ -286,10 +283,9 @@ ${intro('選床指南', '不是先背材質，<br>是先把需求問對。', '�
   </div>
 </section>
 
-<section class="section section-tone-sage">
+<section class="section section-surface-warm">
   <div class="narrow">
     <div class="section-center-head">
-      <span class="sub-label">常見三大選床情境</span>
       <h2>不同生活階段，挑選重點也不同。</h2>
     </div>
     <div class="guide-card" id="feel">
@@ -312,27 +308,23 @@ ${intro('選床指南', '不是先背材質，<br>是先把需求問對。', '�
   </div>
 </section>
 
-<section class="section section-tone-oat" id="prepare">
+<section class="section section-surface-stone" id="prepare">
   <div class="narrow">
-    <span class="sub-label">出發前小清單</span>
     <h2>帶著這些線索來，<br>不必帶著標準答案。</h2>
     <div class="checklist-grid">
       <div class="checklist-card">
-        <span class="card-num">01</span>
         <div>
           <h4>現在這張床哪裡不習慣</h4>
           <p>記下一到兩個最希望改善的生活困擾。</p>
         </div>
       </div>
       <div class="checklist-card">
-        <span class="card-num">02</span>
         <div>
           <h4>床架內徑尺寸與搬運空間</h4>
           <p>量好床架實際擺放空間，留意樓梯轉角與電梯門寬。</p>
         </div>
       </div>
       <div class="checklist-card">
-        <span class="card-num">03</span>
         <div>
           <h4>實際使用人數與偏好</h4>
           <p>共同使用的人盡量一起前來，留足時間放鬆體驗。</p>
@@ -350,7 +342,7 @@ ${close()}`;
 const mattresses = `
 ${intro('床墊一覽', '先看三款，<br>不用一次看幾十張。', '先認識每款床墊的睡感特徵，再由闆娘陪你縮小選擇。正式規格與價格依門市確認資料為準。', '床墊一覽', images.bannerMattresses)}
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <div class="wrap">
     <div class="filter-bar">
       <span>精選款式：</span>
@@ -363,7 +355,7 @@ ${intro('床墊一覽', '先看三款，<br>不用一次看幾十張。', '先�
   </div>
 </section>
 
-<section class="section section-tone-sage" id="compare">
+<section class="section section-surface-warm" id="compare">
   <div class="wrap">
     <h2>別只比名字，<br>把睡感和結構放在一起看。</h2>
     <p class="section-lead">以下整理三款床墊的特點，方便你在到店前心中更有輪廓：</p>
@@ -428,13 +420,13 @@ function productPage(p) {
   return `
 ${intro(p.name + '床墊', p.name, p.line, '床墊一覽 / ' + p.name, images[p.image])}
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <div class="product-hero-clean wrap">
     <div class="product-hero-pic">
       ${pic(p.image, p.name + '床墊情境示意')}
     </div>
     <div class="product-hero-content">
-      <span class="product-tag-pill">${p.feel}</span>
+      <p class="product-feel-meta">${p.feel}</p>
       <h2>${p.name}</h2>
       <p class="product-lead-text">${p.line}</p>
       
@@ -464,7 +456,7 @@ ${intro(p.name + '床墊', p.name, p.line, '床墊一覽 / ' + p.name, images[p.
   </div>
 </nav>
 
-<div class="section-tone-oat">
+<div class="section-surface-warm">
   <div class="wrap product-sections-container">
     <section class="section-row" id="suitability">
       <div class="section-row-label">
@@ -486,13 +478,13 @@ ${intro(p.name + '床墊', p.name, p.line, '床墊一覽 / ' + p.name, images[p.
         <p>永吉堅持真材實料，從親膚透氣表布、減壓舒適棉層，到核心高碳鋼獨立筒，每一層結構都有明確的支撐作用。</p>
         <div class="layer-box-list">
           <div class="layer-box">
-            <strong>表布層：</strong>柔軟透氣針織布，觸感親膚不悶熱。
+            <strong>表布層</strong><span>柔軟透氣針織布，觸感親膚不悶熱。</span>
           </div>
           <div class="layer-box">
-            <strong>舒適層：</strong>高回彈減壓材質，服貼身體曲線。
+            <strong>舒適層</strong><span>高回彈減壓材質，服貼身體曲線。</span>
           </div>
           <div class="layer-box">
-            <strong>支撐層：</strong>高碳鋼獨立筒彈簧，顆顆獨立受力、吸震抗干擾。
+            <strong>支撐層</strong><span>高碳鋼獨立筒彈簧，顆顆獨立受力、吸震抗干擾。</span>
           </div>
         </div>
         <p class="source-label">※ 本款床墊正式層次與厚度數值待品牌最終覆核，確認前不以示意圖浮誇宣稱。</p>
@@ -512,7 +504,7 @@ ${intro(p.name + '床墊', p.name, p.line, '床墊一覽 / ' + p.name, images[p.
           <span>雙人加大 (6 × 6.2 尺)</span>
           <span>雙人特大 (6 × 7 尺)</span>
         </div>
-        <div style="margin-top:20px;">
+        <div style="margin-top:24px;">
           ${contact('詢問尺寸與報價', p.name + '的尺寸與報價', 'btn btn-primary')}
         </div>
       </div>
@@ -530,14 +522,11 @@ ${intro(p.name + '床墊', p.name, p.line, '床墊一覽 / ' + p.name, images[p.
   </div>
 </div>
 
-<section class="section section-tone-sage">
+<section class="section section-surface-light">
   <div class="wrap">
-    <div class="section-title-bar">
-      <div>
-        <span class="sub-label">更多睡感比較</span>
-        <h2>也一起看看其他款式</h2>
-      </div>
-      ${link('/mattresses/#compare', '看完整比較表 →', 'text-link-clean')}
+    <div class="section-header-stack">
+      <h2>也一起看看其他款式</h2>
+      <p class="section-lead">${link('/mattresses/#compare', '查看完整規格比較表 →', 'text-link-clean')}</p>
     </div>
     ${productCards()}
   </div>
@@ -549,13 +538,12 @@ ${close()}`;
 const owner = `
 ${intro('認識闆娘', '買床不用懂，<br>問闆娘就對。', '選床的起點，是每天睡醒最真實的感受。永吉以「闆娘幫你選床」為核心，從生活對話開始，陪你找到睡得安心的床。', '認識闆娘', images.bannerOwner)}
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <div class="wrap editorial-clean">
     <div class="editorial-photo">
       ${pic('hands', '闆娘諮詢與手部觸碰材質情境')}
     </div>
     <div class="editorial-text">
-      <span class="sub-label">永吉選床理念</span>
       <h2>不急著賣你，<br>先陪你選對。</h2>
       <p class="quote-text">「很多人一走進店裡就很緊張，怕被推銷太貴的床，又怕買回家睡幾天就腰酸背痛。」</p>
       <p>闆娘常說，床是每天要躺好幾個小時的地方，不能靠花俏話術，只能靠身體最誠實的反應。把「偏硬一點」、「容易腰酸」、「兩個人喜歡的不一樣」這些日常感受放在前面，其他規格才有比較的意義。</p>
@@ -567,27 +555,23 @@ ${intro('認識闆娘', '買床不用懂，<br>問闆娘就對。', '選床的�
   </div>
 </section>
 
-<section class="section section-tone-sage">
+<section class="section section-surface-warm">
   <div class="narrow">
-    <span class="sub-label">陪伴選床三步</span>
     <h2>一步一步，<br>讓選擇變得清楚踏實。</h2>
     <div class="checklist-grid">
       <div class="checklist-card">
-        <span class="card-num">01</span>
         <div>
           <h4>先聊感受</h4>
           <p>說說現在的床哪裡睡得不舒服，讓挑選有具體的起點。</p>
         </div>
       </div>
       <div class="checklist-card">
-        <span class="card-num">02</span>
         <div>
           <h4>縮小選項</h4>
           <p>依據身型、睡姿與預算，精選兩到三款值得比較的床。</p>
         </div>
       </div>
       <div class="checklist-card">
-        <span class="card-num">03</span>
         <div>
           <h4>安心試躺</h4>
           <p>放鬆躺足時間，把想問的問題問清楚，安心了再做決定。</p>
@@ -613,30 +597,26 @@ ${intro('門市與試躺', '好不好睡，<br>留給身體回答。', '先了�
   </div>
 </nav>
 
-<section class="section section-tone-white" id="experience">
+<section class="section section-surface-light" id="experience">
   <div class="wrap store-banner">
     ${pic('store', '永和中正店體驗環境氛圍')}
   </div>
   <div class="narrow">
-    <span class="sub-label">自在試躺三部曲</span>
     <h2>一趟舒服的試躺，<br>可以這樣開始。</h2>
     <div class="checklist-grid">
       <div class="checklist-card">
-        <span class="card-num">01</span>
         <div>
           <h4>出發前確認方向</h4>
           <p>告訴我們平時的睡姿、使用人數與想比較的款式，確認展示狀態。</p>
         </div>
       </div>
       <div class="checklist-card">
-        <span class="card-num">02</span>
         <div>
           <h4>放鬆躺平感受</h4>
           <p>用熟悉的睡姿躺 15 分鐘，感受肩膀、腰部與臀部的支撐表現。</p>
         </div>
       </div>
       <div class="checklist-card">
-        <span class="card-num">03</span>
         <div>
           <h4>問清楚再做決定</h4>
           <p>了解尺寸、價格、配送與售後條款，不用在現場有壓力地下單。</p>
@@ -649,10 +629,9 @@ ${intro('門市與試躺', '好不好睡，<br>留給身體回答。', '先了�
   </div>
 </section>
 
-<section class="section section-tone-sage" id="store">
+<section class="section section-surface-stone" id="store">
   <div class="wrap store-grid">
     <div class="store-intro-col">
-      <span class="sub-label">實體門市</span>
       <h2>永吉床墊 永和中正店</h2>
       <p>位於永和中正路核心地段，無論是想直接來躺躺，或還不確定從哪張床開始，都歡迎先與闆娘預約專屬時間。</p>
       <div style="margin-top:24px;">
@@ -671,9 +650,8 @@ ${intro('門市與試躺', '好不好睡，<br>留給身體回答。', '先了�
   </div>
 </section>
 
-<section class="section section-tone-oat" id="visit-faq">
+<section class="section section-surface-light" id="visit-faq">
   <div class="narrow">
-    <span class="sub-label">到店前常見疑問</span>
     <h2>來店之前，先安心。</h2>
     ${faq([
       ['到店一定要先預約嗎？可以直接過去嗎？', '為了讓每位顧客享有安靜不被打擾的試躺時間，且確保闆娘在店為您解說，建議出發前透過 LINE 先確認時段。'],
@@ -735,14 +713,14 @@ const articles = [
 const journal = `
 ${intro('選床知識', '選床的事，<br>慢慢說清楚。', '從試躺技巧、尺寸準備到雙人睡眠平衡，把挑床時常遇到的困惑整理成清晰的筆記。', '選床知識', images.bannerJournal)}
 
-<section class="section section-tone-oat">
+<section class="section section-surface-light">
   <div class="wrap journal-columns">
     <article class="journal-lead-card">
       <a href="/journal/first-visit/" class="journal-lead-pic">
         ${pic('hero', '第一次試躺床墊情境示意', false)}
       </a>
       <div class="journal-lead-content">
-        <span class="sub-label">試躺筆記</span>
+        <span class="journal-category">試躺筆記</span>
         <h2><a href="/journal/first-visit/">第一次試躺，先感受什麼？</a></h2>
         <p>不用急著判斷「這張床好不好」，先讓比較的方法保持一致，從熟悉的睡姿開始，把模糊的舒服說得具體踏實。</p>
         ${link('/journal/first-visit/', '閱讀完整筆記 →', 'text-link-clean')}
@@ -768,7 +746,7 @@ function articlePage(a) {
   return `
 ${intro(a.title, a.title, a.lead, '選床知識 / ' + a.tag, images.bannerJournal)}
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <article class="reading-clean narrow">
     <p class="article-lead-clean">${a.lead}</p>
     <div class="article-photo-box">
@@ -802,17 +780,15 @@ ${close()}`;
 const faqPage = `
 ${intro('常見問題與售後', '先問清楚，<br>再放心決定。', '從挑選床墊、配送搬運到售後保障，把顧客在下訂前後最關心的事項整理清楚。', '常見問題與售後', images.bannerGuide)}
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <div class="narrow">
-    <span class="sub-label">試躺與挑選</span>
     <h2>挑選與試躺常見問題</h2>
     ${faq()}
   </div>
 </section>
 
-<section class="section section-tone-sage">
+<section class="section section-surface-warm">
   <div class="narrow">
-    <span class="sub-label">配送與保固</span>
     <h2>配送、舊床與售後保固</h2>
     ${faq([
       [
@@ -840,7 +816,7 @@ ${close()}`;
 const privacy = `
 ${intro('隱私權說明', '隱私權說明', '本頁說明目前永吉床墊網站設計預覽之資料處理方式；正式網站上線前，將依實際營運實體與使用工具更新。', '隱私權說明', images.bannerJournal)}
 
-<section class="section section-tone-white">
+<section class="section section-surface-light">
   <article class="reading-clean narrow">
     <h2>1. 網站資料保護原則</h2>
     <p>永吉床墊重視您的隱私權。目前的展示預覽版本並未設置主動收集個人資料的表單，亦未串接外部商業廣告追蹤程式。</p>

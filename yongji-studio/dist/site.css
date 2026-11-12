@@ -13,24 +13,27 @@
   /* 導覽列高度基準 (相接無縫鎖定) */
   --header-h: 72px;
 
-  /* 自然溫潤色盤 (Anti-Slop Restrained Organic Palette) */
-  --bg-page: #faf9f6;          /* 暖燕麥純淨紙白 */
-  --bg-soft: #f4efe9;          /* 原本溫潤雅緻米砂底色 (Banner 專屬) */
-  --bg-pill: #f0ebe2;          /* 僅用於小標籤與微膠囊的精緻底色 */
-  --bg-card: #ffffff;          /* 純淨暖白瓷 */
+  /* 四色溫潤分層色盤 (Distinct Section Color Rhythm - 告別全站慘白) */
+  --bg-page: #f2ebe1;          /* 溫潤亞麻基底色 */
+  --bg-soft: #eae1d3;          /* 醇厚暖米砂底色 (Banner 與重點分區) */
+  --bg-sand: #eae1d3;          /* 溫潤亞麻米砂區 */
+  --bg-oat: #f0e8dc;           /* 暖陶燕麥色區 */
+  --bg-sage: #dfe9e2;          /* 晨霧鼠尾草綠區 (品牌柔和草木調) */
+  --bg-pill: #e5dccd;          /* 膠囊與標籤底色 */
+  --bg-card: #ffffff;          /* 純淨暖白瓷卡片 */
   
-  --color-pine: #1b3527;        /* 沉穩松墨綠：主品牌色彩，飽和度克制 */
+  --color-pine: #1b3527;        /* 沉穩松墨綠：主品牌色彩 */
   --color-pine-hover: #264b38;  /* 柔光墨綠 */
-  --color-pine-light: #edf3ee;  /* 晨霧淡綠 */
-  --color-clay: #7d6750;        /* 暖陶土自然色 */
+  --color-pine-light: #e6efe9;  /* 晨霧淡綠 */
+  --color-clay: #7c6248;        /* 暖陶土自然色 */
   --color-amber-subtle: #8a735b;/* 琥珀木紋微調色 */
   
-  --text-main: #141d17;         /* 深黛墨黑：主標高清晰對比 (WCAG AAA) */
-  --text-muted: #334037;        /* 雅墨深灰：內文清晰分明 (WCAG AAA) */
-  --text-subtle: #627167;       /* 說明與微字清晰分明 (WCAG AA 4.5:1+) */
+  --text-main: #111a14;         /* 深黛濃墨黑：大標題極致鮮明 */
+  --text-muted: #46544a;        /* 柔和松灰：內文與大標拉開濃淡層次，不再黑壓壓一片 */
+  --text-subtle: #647369;       /* 輔助小字與備註 */
   
-  --line-color: #e4dfd6;        /* 啞光自然邊線 */
-  --line-light: #ece8e1;        /* 極淡線 */
+  --line-color: #d8cfc0;        /* 啞光自然邊線 */
+  --line-light: #e2dace;        /* 區塊柔和分隔線 */
   --line-focus: #1b3527;
 
   /* 字體系統 */
@@ -39,15 +42,15 @@
   
   /* 形狀一致性鎖定 (Shape Consistency Lock - taste-skill) */
   --radius-sm: 6px;             /* 按鈕、Icon 盒、標籤徽章 */
-  --radius-md: 12px;            /* 卡片、圖框、面板容器 */
-  --radius-lg: 16px;            /* 大區塊浮層 */
+  --radius-md: 14px;            /* 卡片、圖框、面板容器 */
+  --radius-lg: 18px;            /* 大區塊浮層 */
   --radius-pill: 999px;
   
   /* 多層次環境光暖灰陰影 (Tinted Elevation System - taste-skill) */
-  --shadow-subtle: 0 1px 3px rgba(20, 29, 23, 0.03), 0 4px 12px rgba(20, 29, 23, 0.04);
-  --shadow-card: 0 2px 6px rgba(20, 29, 23, 0.03), 0 10px 24px -4px rgba(20, 29, 23, 0.05);
-  --shadow-card-hover: 0 4px 12px rgba(20, 29, 23, 0.05), 0 18px 36px -6px rgba(20, 29, 23, 0.09);
-  --shadow-float: 0 12px 32px -6px rgba(20, 29, 23, 0.12), 0 4px 12px rgba(20, 29, 23, 0.04);
+  --shadow-subtle: 0 2px 6px rgba(20, 29, 23, 0.04), 0 6px 16px rgba(20, 29, 23, 0.04);
+  --shadow-card: 0 4px 12px rgba(20, 29, 23, 0.05), 0 14px 32px -6px rgba(20, 29, 23, 0.07);
+  --shadow-card-hover: 0 8px 20px rgba(20, 29, 23, 0.07), 0 22px 44px -8px rgba(20, 29, 23, 0.12);
+  --shadow-float: 0 16px 40px -6px rgba(20, 29, 23, 0.14), 0 6px 16px rgba(20, 29, 23, 0.06);
 
   --grain: url('./assets/paper-grain.svg');
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,7 +71,7 @@ body {
   margin: 0;
   color: var(--text-main);
   background: var(--bg-page) var(--grain) repeat;
-  font: 400 16px/1.85 var(--font-sans);
+  font: 400 15.5px/1.9 var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -101,51 +104,73 @@ h1, h2, h3, h4, p, figure, dl, dd, ul, ol {
   margin: 0;
 }
 
-/* 標題排版 */
+/* 標題與內文黃金比例系統 (拉開大字與小字層次，一眼看懂重點) */
 h1, h2, h3 {
   font-family: var(--font-serif);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-main);
-  line-height: 1.45;
-  letter-spacing: 0.02em;
+  line-height: 1.32;
+  letter-spacing: 0.01em;
 }
 
-h1 { font-size: clamp(34px, 3.8vw, 52px); }
-h2 { font-size: clamp(26px, 2.5vw, 36px); }
-h3 { font-size: clamp(20px, 1.8vw, 24px); }
+h1 { font-size: clamp(38px, 4.2vw, 56px); }
+h2 { font-size: clamp(30px, 3.1vw, 42px); }
+h3 { font-size: clamp(21px, 2vw, 25px); }
 
 p {
   color: var(--text-muted);
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.95;
 }
 
 .wrap {
-  width: min(1160px, 90%);
+  width: min(1180px, 90%);
   margin-inline: auto;
 }
 
 .narrow {
-  width: min(800px, 90%);
+  width: min(820px, 90%);
   margin-inline: auto;
 }
 
+/* 寬裕區塊呼吸間距與四色背景分層 */
 .section {
-  padding-block: 88px;
+  padding-block: 108px;
 }
 
 .section-sm {
-  padding-block: 56px;
+  padding-block: 72px;
 }
 
 .section-white,
-.bg-white {
+.bg-white,
+.section-tone-white {
   background: #ffffff;
   border-bottom: 1px solid var(--line-light);
 }
 
-.bg-soft {
-  background: var(--bg-soft) var(--grain) repeat;
-  border-block: 1px solid var(--line-light);
+.bg-soft,
+.section-tone-sand {
+  background: var(--bg-sand) var(--grain) repeat;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.section-tone-sage {
+  background: var(--bg-sage) var(--grain) repeat;
+  border-bottom: 1px solid #cddbd1;
+}
+
+.section-tone-oat {
+  background: var(--bg-oat) var(--grain) repeat;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.section-center-head {
+  margin-bottom: 42px;
+}
+
+.section-center-head h2 {
+  margin-top: 6px;
 }
 
 /* ==========================================================================
@@ -295,12 +320,17 @@ p {
 }
 
 .sub-label {
-  display: block;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--color-clay);
-  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-pine);
+  background: rgba(27, 53, 39, 0.08);
+  border: 1px solid rgba(27, 53, 39, 0.14);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
 }
 
 /* ==========================================================================
@@ -314,10 +344,10 @@ p {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  background: rgba(250, 249, 246, 0.92);
+  background: rgba(246, 241, 232, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line-light);
+  border-bottom: 1px solid var(--line-color);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -326,8 +356,8 @@ p {
 
 .site-header.scrolled {
   height: var(--header-h);
-  background: rgba(250, 249, 246, 0.98);
-  box-shadow: 0 4px 20px rgba(20, 29, 23, 0.06);
+  background: rgba(246, 241, 232, 0.98);
+  box-shadow: 0 4px 20px rgba(20, 29, 23, 0.07);
   border-bottom-color: var(--line-color);
 }
 
@@ -390,7 +420,7 @@ p {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1.5px;
+  height: 2px;
   background: var(--color-pine);
   transition: width 0.25s var(--ease);
 }
@@ -450,18 +480,18 @@ p {
 }
 
 /* ==========================================================================
-   首頁 1. 品牌主張與真實影像 (Hero Clean)
+   首頁 1. 品牌主張與真實影像 (Hero Clean - 溫潤亞麻卡片・告別慘白霧氣)
    ========================================================================== */
 
 .hero-clean {
-  min-height: 600px;
+  min-height: 640px;
   position: relative;
   overflow: hidden;
-  background: var(--bg-page);
+  background: var(--bg-sand);
   color: var(--text-main);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--line-light);
+  border-bottom: 1px solid var(--line-color);
 }
 
 .hero-image-wrap {
@@ -481,48 +511,68 @@ p {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(250, 249, 246, 0.98) 0%,
-    rgba(250, 249, 246, 0.94) 40%,
-    rgba(250, 249, 246, 0.6) 68%,
-    rgba(250, 249, 246, 0.15) 100%
+    rgba(235, 226, 212, 0.78) 0%,
+    rgba(235, 226, 212, 0.45) 38%,
+    rgba(235, 226, 212, 0.08) 65%,
+    rgba(235, 226, 212, 0) 100%
   );
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-block: 80px;
+  padding-block: 76px;
 }
 
 .hero-text {
-  max-width: 600px;
+  max-width: 580px;
+  background: rgba(247, 242, 234, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 44px 46px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-left: 5px solid var(--color-pine);
+  box-shadow: 0 20px 48px -12px rgba(20, 29, 23, 0.14), 0 4px 14px rgba(20, 29, 23, 0.05);
 }
 
 .hero-pretitle {
   display: inline-block;
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--color-clay);
+  color: var(--color-pine);
+  background: rgba(27, 53, 39, 0.09);
+  padding: 5px 13px;
+  border-radius: var(--radius-pill);
   margin-bottom: 18px;
 }
 
 .hero-clean h1 {
   color: var(--text-main);
-  font-size: clamp(38px, 4.2vw, 56px);
-  margin-bottom: 20px;
-  line-height: 1.35;
+  font-size: clamp(38px, 4.1vw, 54px);
+  margin-bottom: 18px;
+  line-height: 1.28;
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
   text-rendering: optimizeLegibility;
+}
+
+.hero-lead-tag {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-pine);
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .hero-desc {
   color: var(--text-muted);
-  font-size: 16.5px;
-  line-height: 1.9;
-  margin-bottom: 34px;
-  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 32px;
+  max-width: 46ch;
 }
 
 .hero-btns {
@@ -532,12 +582,10 @@ p {
 }
 
 .btn-outline-hero {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #ffffff;
   color: var(--color-pine);
   border: 1.5px solid var(--color-pine);
-  box-shadow: 0 1px 3px rgba(20, 29, 23, 0.05);
+  box-shadow: 0 2px 6px rgba(20, 29, 23, 0.05);
 }
 
 .btn-outline-hero:hover {
@@ -548,39 +596,46 @@ p {
 
 .image-note {
   position: absolute;
-  bottom: 16px;
+  bottom: 18px;
   right: 4%;
   font-size: 11px;
-  color: var(--text-subtle);
-  background: rgba(255, 255, 255, 0.88);
+  color: #ffffff;
+  background: rgba(20, 29, 23, 0.72);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid var(--line-light);
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: var(--radius-sm);
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* ==========================================================================
-   首頁 2. 三個需求入口 (Entrances Clean)
+   首頁 2. 三個需求入口 (Entrances Clean - 溫潤米砂底＋立體白卡)
    ========================================================================== */
 
 .entrances-clean {
-  padding-block: 54px 24px;
+  padding-block: 96px 104px;
+}
+
+.entrances-header {
+  margin-bottom: 44px;
+}
+
+.entrances-main-title {
+  font-size: clamp(28px, 2.8vw, 38px);
 }
 
 .entrances-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 32px;
 }
 
 .entrance-item {
   background: #ffffff;
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-color);
+  border-top: 4px solid var(--color-pine);
   border-radius: var(--radius-md);
-  padding: 36px 30px;
+  padding: 38px 34px;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-card);
@@ -588,42 +643,55 @@ p {
   transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
+.entrance-item:nth-child(2) {
+  border-top-color: var(--color-clay);
+}
+
 .entrance-item:hover {
-  transform: translateY(-3.5px);
+  transform: translateY(-5px);
   border-color: var(--color-pine);
   box-shadow: var(--shadow-card-hover);
 }
 
+.entrance-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
 .entrance-icon-box {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-sm);
-  background: var(--bg-soft);
+  background: var(--bg-sand);
   color: var(--color-pine);
   display: grid;
   place-items: center;
-  margin-bottom: 22px;
-  border: 1px solid rgba(27, 53, 39, 0.08);
-  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.04);
+  border: 1px solid rgba(27, 53, 39, 0.1);
   transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .entrance-item:hover .entrance-icon-box {
   background: var(--color-pine);
   color: #ffffff;
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .entrance-hint {
-  font-size: 13px;
-  color: var(--text-subtle);
-  margin-bottom: 8px;
-  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-clay);
+  background: var(--bg-oat);
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
-.entrance-item h2 {
-  font-size: 23px;
-  margin-bottom: 12px;
+.entrance-item h3 {
+  font-size: 25px;
+  margin-bottom: 14px;
   color: var(--text-main);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -631,20 +699,22 @@ p {
 
 .entrance-item p {
   font-size: 14.5px;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   flex-grow: 1;
 }
 
 .entrance-go {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-pine);
+  padding-top: 16px;
+  border-top: 1px solid var(--line-light);
   margin-top: auto;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   transition: transform 0.2s var(--ease);
 }
 
@@ -653,27 +723,23 @@ p {
 }
 
 /* ==========================================================================
-   首頁 3. 闆娘怎麼協助選床 (Method Clean)
+   首頁 3. 闆娘怎麼協助選床 (Method Clean - 純白底＋暖米砂步驟盒)
    ========================================================================== */
-
-.method-clean {
-  border-top: 1px solid var(--line-light);
-}
 
 .method-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 72px;
+  grid-template-columns: 1fr 1.12fr;
+  gap: 76px;
   align-items: center;
 }
 
 .method-figure figure {
-  height: 480px;
+  height: 500px;
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-card);
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-color);
 }
 
 .method-figure .caption {
@@ -692,25 +758,27 @@ p {
 }
 
 .method-intro {
-  font-size: 16px;
-  line-height: 1.9;
-  margin: 18px 0 28px;
+  font-size: 15.5px;
+  line-height: 1.95;
+  margin: 20px 0 32px;
+  color: var(--text-muted);
 }
 
 .method-steps-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 36px;
 }
 
 .method-step {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  padding: 18px 22px;
-  background: #ffffff;
-  border: 1px solid var(--line-light);
+  gap: 18px;
+  padding: 22px 24px;
+  background: var(--bg-oat);
+  border: 1px solid var(--line-color);
+  border-left: 4px solid var(--color-pine);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-subtle);
   transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
@@ -718,29 +786,28 @@ p {
 
 .method-step:hover {
   transform: translateY(-2px);
-  border-color: rgba(27, 53, 39, 0.25);
+  background: #ffffff;
   box-shadow: var(--shadow-card);
 }
 
 .step-icon-wrap {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-sm);
-  background: var(--bg-soft);
+  background: #ffffff;
   color: var(--color-pine);
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  border: 1px solid rgba(27, 53, 39, 0.08);
-  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.04);
+  border: 1px solid rgba(27, 53, 39, 0.12);
+  box-shadow: 0 2px 4px rgba(20, 29, 23, 0.04);
 }
 
 .step-content h3 {
-  font-size: 16.5px;
-  margin-bottom: 4px;
+  font-size: 19px;
+  margin-bottom: 6px;
   color: var(--text-main);
   font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 .step-content p {
@@ -756,38 +823,33 @@ p {
 }
 
 /* ==========================================================================
-   首頁 4. 精選款式與差異 (Products Clean - taste-skill Alignment)
+   首頁 4. 精選款式與差異 (Products Clean - 晨霧鼠尾草綠底＋純白立體卡片)
    ========================================================================== */
-
-.products-clean {
-  background: transparent;
-  border-block: 1px solid var(--line-light);
-}
 
 .section-title-bar {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 30px;
-  margin-bottom: 44px;
+  margin-bottom: 52px;
 }
 
 .section-lead {
   font-size: 15.5px;
   color: var(--text-muted);
-  margin-top: 10px;
-  max-width: 58ch;
+  margin-top: 12px;
+  max-width: 56ch;
 }
 
 .products-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 34px;
 }
 
 .clean-product-card {
   background: #ffffff;
-  border: 1px solid var(--line-light);
+  border: 1px solid rgba(27, 53, 39, 0.14);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
@@ -797,8 +859,8 @@ p {
 }
 
 .clean-product-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(27, 53, 39, 0.35);
+  transform: translateY(-6px);
+  border-color: var(--color-pine);
   box-shadow: var(--shadow-card-hover);
 }
 
@@ -818,11 +880,11 @@ p {
 }
 
 .clean-product-card:hover .card-image-link img {
-  transform: scale(1.035);
+  transform: scale(1.04);
 }
 
 .card-text {
-  padding: 26px 24px;
+  padding: 30px 28px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -831,13 +893,13 @@ p {
 .card-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
 .card-head h3 {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -847,26 +909,36 @@ p {
 }
 
 .feel-pill {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--color-pine);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.03em;
+}
+
+.card-target {
+  font-size: 13px;
+  font-weight: 600;
   color: var(--color-clay);
-  background: var(--bg-soft);
-  padding: 3.5px 10px;
+  background: var(--bg-oat);
+  padding: 5px 12px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(125, 103, 80, 0.15);
-  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+  align-self: flex-start;
 }
 
 .card-desc {
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.85;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   flex-grow: 1;
   color: var(--text-muted);
 }
 
 .card-foot {
-  padding-top: 16px;
+  padding-top: 18px;
   border-top: 1px solid var(--line-light);
 }
 
@@ -874,7 +946,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-pine);
   transition: transform 0.2s var(--ease);
@@ -885,52 +957,47 @@ p {
 }
 
 .notice-box {
-  margin-top: 36px;
-  padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--line-light);
+  margin-top: 40px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(27, 53, 39, 0.14);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-subtle);
 }
 
 .notice-box p {
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--text-subtle);
 }
 
 /* ==========================================================================
-   首頁 5. 真實服務案例 (Cases Clean)
+   首頁 5. 真實服務案例 (Cases Clean - 暖陶燕麥底＋左側陶土金故事卡)
    ========================================================================== */
 
-.cases-clean {
-  border-bottom: 1px solid var(--line-light);
-}
-
 .cases-header {
-  max-width: 640px;
-  margin-bottom: 40px;
+  max-width: 680px;
+  margin-bottom: 48px;
 }
 
 .cases-lead {
   font-size: 15.5px;
-  margin-top: 10px;
+  margin-top: 12px;
   color: var(--text-muted);
 }
 
 .cases-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-bottom: 36px;
+  gap: 34px;
+  margin-bottom: 40px;
 }
 
 .case-box {
   background: #ffffff;
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-color);
+  border-left: 5px solid var(--color-clay);
   border-radius: var(--radius-md);
-  padding: 36px 32px;
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-card);
@@ -938,41 +1005,45 @@ p {
 }
 
 .case-box:hover {
-  transform: translateY(-3px);
-  border-color: rgba(27, 53, 39, 0.3);
+  transform: translateY(-4px);
+  border-color: var(--color-pine);
   box-shadow: var(--shadow-card-hover);
 }
 
 .case-tag {
+  align-self: flex-start;
   font-size: 12px;
   font-weight: 600;
   color: var(--color-clay);
+  background: var(--bg-oat);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
   letter-spacing: 0.04em;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .case-box h3 {
-  font-size: 19px;
-  margin-bottom: 12px;
+  font-size: 22px;
+  margin-bottom: 14px;
   color: var(--text-main);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .case-box p {
-  font-size: 14.5px;
-  line-height: 1.85;
-  margin-bottom: 22px;
+  font-size: 15px;
+  line-height: 1.95;
+  margin-bottom: 24px;
   flex-grow: 1;
   color: var(--text-muted);
 }
 
 .case-author {
-  font-size: 12.5px;
-  color: var(--text-subtle);
-  padding-top: 14px;
+  font-size: 13px;
+  color: var(--color-pine);
+  padding-top: 16px;
   border-top: 1px solid var(--line-light);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .cases-statement {
@@ -980,9 +1051,9 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 18px 24px;
-  background: var(--bg-soft);
-  border: 1px solid var(--line-light);
+  padding: 20px 28px;
+  background: #ffffff;
+  border: 1px solid var(--line-color);
   border-radius: var(--radius-sm);
   font-size: 13.5px;
   box-shadow: var(--shadow-subtle);
@@ -994,28 +1065,23 @@ p {
 }
 
 /* ==========================================================================
-   首頁 6. 試躺流程及門市 (Visit Clean)
+   首頁 6. 試躺流程及門市 (Visit Clean - 純白底＋晨霧綠重點卡片)
    ========================================================================== */
-
-.visit-clean {
-  background: #ffffff;
-  border-bottom: 1px solid var(--line-light);
-}
 
 .visit-box-layout {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 68px;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 72px;
   align-items: center;
 }
 
 .visit-visual figure {
-  height: 460px;
+  height: 490px;
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-card);
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-color);
 }
 
 .visit-visual .caption {
@@ -1034,46 +1100,49 @@ p {
 }
 
 .visit-intro {
-  font-size: 16px;
-  line-height: 1.9;
-  margin: 18px 0 28px;
+  font-size: 15.5px;
+  line-height: 1.95;
+  margin: 20px 0 30px;
   color: var(--text-muted);
 }
 
 .visit-points-grid {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin: 0 0 34px;
+  gap: 16px;
+  margin: 0 0 36px;
 }
 
 .visit-point-item {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  padding: 18px 22px;
+  background: var(--color-pine-light);
+  border: 1px solid #cfe0d5;
+  border-radius: var(--radius-sm);
 }
 
 .point-icon-box {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
-  background: var(--bg-soft);
+  background: #ffffff;
   color: var(--color-pine);
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  border: 1px solid rgba(27, 53, 39, 0.08);
-  box-shadow: 0 1px 2px rgba(20, 29, 23, 0.04);
-  margin-top: 2px;
+  border: 1px solid rgba(27, 53, 39, 0.12);
+  box-shadow: 0 2px 4px rgba(20, 29, 23, 0.04);
 }
 
 .visit-point-item strong {
   display: block;
-  font-size: 15.5px;
+  font-size: 17px;
+  font-family: var(--font-serif);
   color: var(--text-main);
   font-weight: 600;
-  margin-bottom: 3px;
-  letter-spacing: -0.01em;
+  margin-bottom: 4px;
 }
 
 .visit-point-item p {
@@ -1089,13 +1158,13 @@ p {
 }
 
 /* ==========================================================================
-   首頁 7. 常見問題 (FAQ Clean)
+   首頁 7. 常見問題 (FAQ Clean - 溫潤米砂底＋純白問答卡)
    ========================================================================== */
 
 .faq-layout {
   display: grid;
   grid-template-columns: 1fr 1.35fr;
-  gap: 64px;
+  gap: 68px;
   align-items: flex-start;
 }
 
@@ -1106,34 +1175,34 @@ p {
 
 .faq-intro-col p {
   font-size: 15.5px;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--text-muted);
-  margin: 16px 0 28px;
+  margin: 18px 0 30px;
 }
 
 .faq-accordion {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .faq-row {
   background: #ffffff;
-  border: 1px solid var(--line-light);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: var(--shadow-card);
   transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .faq-row:hover {
-  border-color: rgba(27, 53, 39, 0.25);
-  box-shadow: var(--shadow-card);
+  border-color: var(--color-pine);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .faq-row[open] {
   border-color: var(--color-pine);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .faq-question {
@@ -1143,11 +1212,11 @@ p {
   align-items: center;
   gap: 16px;
   list-style: none;
-  padding: 22px 26px;
-  font-size: 16px;
+  padding: 24px 28px;
+  font-size: 17.5px;
+  font-family: var(--font-serif);
   font-weight: 600;
   color: var(--text-main);
-  letter-spacing: -0.01em;
   transition: color 0.2s var(--ease);
 }
 
@@ -1160,38 +1229,45 @@ p {
 }
 
 .faq-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-sand);
+  display: grid;
+  place-items: center;
   font-size: 18px;
-  font-weight: 400;
-  color: var(--text-subtle);
-  transition: transform 0.25s var(--ease), color 0.25s var(--ease);
+  font-weight: 500;
+  color: var(--color-pine);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
 }
 
 .faq-row[open] .faq-icon {
   transform: rotate(45deg);
-  color: var(--color-pine);
+  background: var(--color-pine);
+  color: #ffffff;
 }
 
 .faq-answer {
-  padding: 0 26px 22px;
+  padding: 0 28px 24px;
   border-top: 1px solid var(--line-light);
-  margin-top: -2px;
-  padding-top: 16px;
+  padding-top: 18px;
 }
 
 .faq-answer p {
-  font-size: 14.5px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.95;
   color: var(--text-muted);
 }
 
 /* ==========================================================================
-   首頁 8. 最後詢問與預約入口 (Contact Clean)
+   首頁 8. 最後詢問與預約入口 (Contact Clean - 靜謐深松森林綠)
    ========================================================================== */
 
 .contact-footer-clean {
-  background: var(--color-pine) var(--grain) repeat;
+  background: #172e21 var(--grain) repeat;
   color: #ffffff;
-  padding-block: 80px;
+  padding-block: 96px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -1199,21 +1275,33 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 44px;
+}
+
+.contact-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #d8e8de;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
 }
 
 .contact-footer-text h2 {
   color: #ffffff;
-  font-size: clamp(28px, 2.8vw, 38px);
-  margin-bottom: 12px;
+  font-size: clamp(30px, 3vw, 40px);
+  margin-bottom: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .contact-footer-text p {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .contact-footer-actions {
@@ -1230,14 +1318,14 @@ p {
 
 .page-intro-clean {
   background: var(--bg-soft) var(--grain) repeat;
-  border-bottom: 1px solid var(--line-light);
-  padding-block: 56px 48px;
+  border-bottom: 1px solid var(--line-color);
+  padding-block: 68px 60px;
 }
 
 .page-intro-inner {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 52px;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 56px;
   align-items: center;
 }
 
@@ -1248,7 +1336,7 @@ p {
 .breadcrumb {
   font-size: 13px;
   color: var(--text-subtle);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1270,26 +1358,29 @@ p {
 
 .intro-eyebrow {
   display: inline-block;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--color-clay);
-  margin-bottom: 10px;
+  letter-spacing: 0.12em;
+  color: var(--color-pine);
+  background: rgba(27, 53, 39, 0.09);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
 }
 
 .intro-headline h1 {
-  font-size: clamp(32px, 3.4vw, 44px);
-  line-height: 1.35;
+  font-size: clamp(34px, 3.6vw, 48px);
+  line-height: 1.3;
   letter-spacing: -0.015em;
   color: var(--text-main);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .intro-description {
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--text-muted);
-  max-width: 58ch;
+  max-width: 54ch;
 }
 
 .intro-banner-col {
@@ -1301,7 +1392,7 @@ p {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  border: 1px solid var(--line-light);
+  border: 1px solid var(--line-color);
   position: relative;
   background: #e7e3dc;
   margin: 0;
@@ -1392,15 +1483,16 @@ p {
 .editorial-clean {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 68px;
   align-items: center;
 }
 
 .editorial-photo figure {
-  height: 440px;
+  height: 460px;
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
+  box-shadow: var(--shadow-card);
 }
 
 .editorial-photo .caption {
@@ -1416,63 +1508,72 @@ p {
 }
 
 .editorial-text h2 {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .editorial-action {
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .quote-text {
-  font-size: 16.5px;
-  font-style: italic;
-  color: var(--text-main);
-  margin-bottom: 14px;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--color-pine);
+  background: var(--bg-oat);
+  padding: 16px 20px;
+  border-left: 4px solid var(--color-pine);
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
 }
 
 /* 選床卡片 */
 .guide-card {
   background: #ffffff;
   border: 1px solid var(--line-color);
+  border-left: 5px solid var(--color-pine);
   border-radius: var(--radius-md);
-  padding: 32px 30px;
-  margin-bottom: 22px;
+  padding: 36px 34px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow-card);
   scroll-margin-top: 140px;
 }
 
 .guide-card h3 {
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.guide-card p {
-  font-size: 14.5px;
-  line-height: 1.9;
+  font-size: 23px;
   margin-bottom: 14px;
 }
 
+.guide-card p {
+  font-size: 15px;
+  line-height: 1.95;
+  margin-bottom: 16px;
+}
+
 .inline-tip {
-  font-size: 12.5px !important;
+  font-size: 13px !important;
   color: var(--text-subtle) !important;
-  padding-left: 10px;
-  border-left: 2px solid var(--line-color);
+  padding: 10px 14px;
+  background: var(--bg-oat);
+  border-left: 3px solid var(--color-clay);
+  border-radius: var(--radius-sm);
 }
 
 .checklist-grid {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 28px;
+  gap: 18px;
+  margin-top: 32px;
 }
 
 .checklist-card {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  gap: 22px;
   background: #ffffff;
   border: 1px solid var(--line-color);
-  border-radius: var(--radius-sm);
-  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-subtle);
 }
 
 .card-num {
@@ -2147,26 +2248,26 @@ p {
   }
 
   .section {
-    padding-block: 52px;
+    padding-block: 68px;
   }
 
   .section-sm {
-    padding-block: 36px;
+    padding-block: 48px;
   }
 
   h1 {
-    font-size: clamp(25px, 6.8vw, 32px);
-    line-height: 1.36;
+    font-size: clamp(26px, 6.8vw, 33px);
+    line-height: 1.34;
   }
 
   h2 {
-    font-size: clamp(22px, 5.8vw, 27px);
-    line-height: 1.38;
+    font-size: clamp(24px, 6vw, 29px);
+    line-height: 1.35;
   }
 
   h3 {
-    font-size: 18.5px;
-    line-height: 1.4;
+    font-size: 20px;
+    line-height: 1.38;
   }
 
   /* 1. 頂部導覽列精緻化 */
@@ -2255,34 +2356,45 @@ p {
     min-height: auto;
     flex-direction: column;
     align-items: stretch;
-    background: var(--bg-soft) var(--grain) repeat;
-    padding-bottom: 28px;
+    background: var(--bg-oat) var(--grain) repeat;
+    padding-bottom: 32px;
   }
 
   .hero-content {
     order: 1;
-    padding-block: 28px 20px;
+    padding-block: 24px 18px;
   }
 
   .hero-text {
     max-width: 100%;
+    padding: 26px 22px;
+    background: #ffffff;
+    border: 1px solid var(--line-color);
+    border-left: 4px solid var(--color-pine);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
   }
 
   .hero-pretitle {
-    font-size: 12px;
+    font-size: 11.5px;
     letter-spacing: 0.08em;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .hero-clean h1 {
     font-size: clamp(26px, 7vw, 32px);
-    line-height: 1.36;
+    line-height: 1.34;
     letter-spacing: 0;
     margin-bottom: 12px;
   }
 
+  .hero-lead-tag {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+
   .hero-desc {
-    font-size: 14.5px;
+    font-size: 14px;
     line-height: 1.8;
     margin-bottom: 20px;
     color: var(--text-muted);
@@ -2311,7 +2423,7 @@ p {
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-card);
-    border: 1px solid var(--line-light);
+    border: 1px solid var(--line-color);
   }
 
   .hero-image-wrap img {
@@ -2323,7 +2435,7 @@ p {
   }
 
   .image-note {
-    bottom: 36px;
+    bottom: 40px;
     right: 6.5%;
     font-size: 10px;
     padding: 3px 8px;
@@ -2332,9 +2444,13 @@ p {
     border: none;
   }
 
-  /* 3. 三大需求入口緊湊化 */
+  /* 3. 三大需求入口緊湊化與明確留白 */
   .entrances-clean {
-    padding-block: 32px 16px;
+    padding-block: 56px 64px;
+  }
+
+  .entrances-header {
+    margin-bottom: 28px;
   }
 
   .entrances-row,
@@ -2342,28 +2458,31 @@ p {
   .cases-columns,
   .products-grid-clean {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
   }
 
   .entrance-item {
-    padding: 22px 20px;
+    padding: 26px 22px;
+  }
+
+  .entrance-top-bar {
+    margin-bottom: 16px;
   }
 
   .entrance-icon-box {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 14px;
+    width: 42px;
+    height: 42px;
   }
 
-  .entrance-item h2 {
-    font-size: 19.5px;
-    margin-bottom: 8px;
+  .entrance-item h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
   }
 
   .entrance-item p {
     font-size: 14px;
-    line-height: 1.75;
-    margin-bottom: 14px;
+    line-height: 1.8;
+    margin-bottom: 18px;
   }
 
   /* 4. 圖文雙欄與配圖比例黃金化 (消除 480px 超高圖片) */

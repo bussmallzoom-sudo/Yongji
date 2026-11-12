@@ -130,4 +130,133 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // 4. 建築感景深視差捲動與漸進浮現系統 (Architectural Parallax & Scroll Reveal)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    // 4a. 綁定漸進浮現元素 (Scroll Reveal)
+    const revealGroups = [
+      '.section-header-stack, .entrances-header, .cases-header, .faq-intro-col, .intro-headline',
+      '.entrance-row-item',
+      '.method-step',
+      '.clean-product-card, .product-item-clean',
+      '.case-quote-block',
+      '.visit-point-item',
+      '.faq-row',
+      '.guide-card, .checklist-card, .journal-small-item, .article-paragraph'
+    ];
+
+    const revealElements = document.querySelectorAll(revealGroups.join(', '));
+    revealElements.forEach((el) => {
+      el.classList.add('reveal-item');
+      // 同層級元素自動設定交錯延遲 (Staggered Delay)
+      const parent = el.parentElement;
+      if (parent) {
+        const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal-item'));
+        const idx = siblings.indexOf(el);
+        if (idx > 0) {
+          el.style.setProperty('--reveal-delay', `${Math.min(idx * 90, 270)}ms`);
+        }
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('is-visible'));
+    }
+
+    // 4b. 綁定雙欄高低差錯位視差目標 (Asymmetric Column Counter-Parallax)
+    const colPairs = [
+      ['.method-figure', -22],
+      ['.method-copy', 18],
+      ['.visit-details', -18],
+      ['.visit-visual', 24],
+      ['.cases-columns > .case-quote-block:nth-child(1)', -14],
+      ['.cases-columns > .case-quote-block:nth-child(2)', 22],
+      ['.products-cards > .clean-product-card:nth-child(2)', 24],
+      ['.editorial-photo', -20],
+      ['.editorial-text', 16],
+      ['.product-hero-pic', -18],
+      ['.product-hero-details', 16]
+    ];
+
+    const activeCols = [];
+    colPairs.forEach(([selector, speed]) => {
+      document.querySelectorAll(selector).forEach(el => {
+        el.classList.add('parallax-col');
+        activeCols.push({ el, speed });
+      });
+    });
+
+    const heroSection = document.querySelector('.hero-clean');
+    const heroImg = document.querySelector('.hero-image-wrap img');
+    const heroText = document.querySelector('.hero-text');
+    const parallaxImgs = Array.from(document.querySelectorAll('[data-parallax-img]'));
+
+    let ticking = false;
+    const updateParallax = () => {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight || 800;
+      const viewCenter = vh * 0.5;
+      const isDesktop = window.innerWidth > 900;
+
+      // 首屏全版大圖雙層景深視差
+      if (heroSection && scrollY < vh * 1.4) {
+        if (heroImg) {
+          heroImg.style.setProperty('--hero-bg-y', `${(scrollY * 0.28).toFixed(1)}px`);
+        }
+        if (heroText && isDesktop) {
+          heroText.style.setProperty('--hero-text-y', `${(scrollY * -0.14).toFixed(1)}px`);
+        } else if (heroText) {
+          heroText.style.setProperty('--hero-text-y', '0px');
+        }
+      }
+
+      // 全站圖片視窗景深漫遊視差
+      parallaxImgs.forEach(img => {
+        const container = img.closest('.parallax-window') || img;
+        const rect = container.getBoundingClientRect();
+        if (rect.bottom < -100 || rect.top > vh + 100) return;
+        const elemCenter = rect.top + rect.height * 0.5;
+        const normalized = Math.max(-1, Math.min(1, (viewCenter - elemCenter) / (vh * 0.7)));
+        const offset = (normalized * 30).toFixed(1);
+        img.style.setProperty('--parallax-y', `${offset}px`);
+      });
+
+      // 桌面版雙欄高低差錯位視差
+      if (isDesktop) {
+        activeCols.forEach(({ el, speed }) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.bottom < -120 || rect.top > vh + 120) return;
+          const elemCenter = rect.top + rect.height * 0.5;
+          const normalized = Math.max(-1, Math.min(1, (viewCenter - elemCenter) / (vh * 0.75)));
+          const colOffset = (normalized * speed).toFixed(1);
+          el.style.setProperty('--col-parallax-y', `${colOffset}px`);
+        });
+      }
+
+      ticking = false;
+    };
+
+    const onScrollOrResize = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+    updateParallax();
+  }
 });

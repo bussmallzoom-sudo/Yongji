@@ -64,7 +64,7 @@ const nav = [
 const brand = `<span class="brand-mark" aria-hidden="true">永</span><span class="brand-name">永吉床墊<small>YONGJI MATTRESS</small></span>`;
 const link = (url, text, cls = 'text-link') => `<a class="${cls}" href="${url}">${text}</a>`;
 const contact = (text = 'LINE 問闆娘', topic = '', cls = 'btn') => `<button type="button" class="${cls}" data-contact="${topic}">${text}</button>`;
-const pic = (key, alt, caption = true) => `<figure class="image-fallback"><img src="${images[key]}" alt="${alt}" loading="lazy" width="1200" height="900">${caption ? `<figcaption class="caption">原站 AI 情境示意，非${key === 'store' ? '門市實景' : key === 'hands' ? '闆娘本人' : '商品實拍'}</figcaption>` : ''}</figure>`;
+const pic = (key, alt, caption = true) => `<figure class="image-fallback"><div class="parallax-window"><img src="${images[key]}" alt="${alt}" loading="lazy" width="1200" height="900" data-parallax-img></div>${caption ? `<figcaption class="caption">原站 AI 情境示意，非${key === 'store' ? '門市實景' : key === 'hands' ? '闆娘本人' : '商品實拍'}</figcaption>` : ''}</figure>`;
 
 const faqItems = [
   [
@@ -123,8 +123,8 @@ const intro = (eyebrow, title, desc, bread = '', banner = '') => `
     </div>
     ${banner ? `
     <div class="intro-banner-col">
-      <figure class="intro-banner-card">
-        <img src="${banner}" alt="${bread || title.replaceAll('<br>', '')} 情境空間示意" loading="eager" width="1200" height="750">
+      <figure class="intro-banner-card parallax-window">
+        <img src="${banner}" alt="${bread || title.replaceAll('<br>', '')} 情境空間示意" loading="eager" width="1200" height="750" data-parallax-img>
       </figure>
     </div>` : ''}
   </div>
